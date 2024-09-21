@@ -33,7 +33,7 @@ ChatManager.currentContact = ChatManagerDB.currentContact
 
 -- 创建UI框架
 local frame = CreateFrame("Frame", "ChatManagerFrame", UIParent, "BasicFrameTemplateWithInset")
-frame:SetSize(700, 500) -- 增加窗口大小以适应新布局
+frame:SetSize(750, 600) -- 增加窗口大小以适应新布局
 frame:SetPoint("CENTER")
 frame.title = frame:CreateFontString(nil, "OVERLAY")
 frame.title:SetFontObject("GameFontHighlight")
@@ -57,35 +57,34 @@ end)
 -- 恢复窗口位置
 if ChatManagerDB.framePosition then
   frame:ClearAllPoints()
-  frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition
-    [3], ChatManagerDB.framePosition[4])
+  frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition[3], ChatManagerDB.framePosition[4])
 end
 
 -- 创建左侧联系人列表
 local contactsScrollFrame = CreateFrame("ScrollFrame", nil, frame, "UIPanelScrollFrameTemplate")
-contactsScrollFrame:SetSize(200, 400)
-contactsScrollFrame:SetPoint("TOPLEFT", 20, -50)
+contactsScrollFrame:SetSize(220, 450)
+contactsScrollFrame:SetPoint("TOPLEFT", 20, -60)
 
 local contactsFrame = CreateFrame("Frame", nil, contactsScrollFrame)
-contactsFrame:SetSize(200, 400)
+contactsFrame:SetSize(220, 450)
 contactsScrollFrame:SetScrollChild(contactsFrame)
 
 -- 创建右侧聊天记录
 local chatScrollFrame = CreateFrame("ScrollFrame", nil, frame, "UIPanelScrollFrameTemplate")
-chatScrollFrame:SetSize(450, 300)
-chatScrollFrame:SetPoint("TOPRIGHT", -20, -50)
+chatScrollFrame:SetSize(500, 400)
+chatScrollFrame:SetPoint("TOPRIGHT", -20, -60)
 
 local chatFrame = CreateFrame("Frame", nil, chatScrollFrame)
-chatFrame:SetSize(450, 300)
+chatFrame:SetSize(500, 400)
 chatScrollFrame:SetScrollChild(chatFrame)
 
 -- 当前选中的联系人高亮颜色
-local highlightColor = { 0, 1, 0, 0.5 }     -- 绿色半透明
+local highlightColor = { 0.46, 0.71, 0.77, 0.8 }     -- 绿色半透明调整为指定颜色
 local defaultBackdropColor = { 0, 0, 0, 0 } -- 无背景
 
 -- 定义消息颜色
-local playerMessageColor = { 0, 1, 0, 1 }    -- 绿色
-local contactMessageColor = { 0, 0.5, 1, 1 } -- 蓝色
+local playerMessageColor = {  0.5, 0.8, 0.5, 1  }    -- #76b5c5
+local contactMessageColor = { 0.46, 0.71, 0.77, 1 } -- rgb(118,181,197)
 
 -- 显示聊天记录函数
 function ShowChatWith(contactName)
@@ -120,9 +119,9 @@ function ShowChatWith(contactName)
   for i, chat in ipairs(chats) do
     local msg = chatFrame.messages[i] or chatFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     chatFrame.messages[i] = msg
-    msg:SetWidth(430) -- 设置消息宽度以适应新布局
+    msg:SetWidth(480) -- 设置消息宽度以适应新布局
     msg:SetJustifyH("LEFT")
-    msg:SetPoint("TOPLEFT", 10, -10 - (i - 1) * 20)
+    msg:SetPoint("TOPLEFT", 10, -10 - (i - 1) * 22) -- 增加消息间距
 
     -- 根据发送者设置颜色
     if chat.sender == ChatManager.playerName then
@@ -170,7 +169,7 @@ function UpdateContacts()
     local button = contactsFrame.buttons[i] or
         CreateFrame("Button", nil, contactsFrame, "UIPanelButtonTemplate, BackdropTemplate")
     contactsFrame.buttons[i] = button
-    button:SetSize(180, 25)
+    button:SetSize(200, 25)
     button:SetPoint("TOPLEFT", 10, -5 - 30 * (i - 1))
     button:SetText(contact.name .. (contact.unread > 0 and (" (" .. contact.unread .. ")") or ""))
 
@@ -260,8 +259,8 @@ end
 local function CreatePresetReplyButtons()
   for i, preset in ipairs(replyPresets) do
     local replyButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
-    replyButton:SetSize(100, 25)
-    replyButton:SetPoint("BOTTOMRIGHT", -10, 50 + (i - 1) * 35) -- 调整位置以适应新布局
+    replyButton:SetSize(120, 30)
+    replyButton:SetPoint("BOTTOMRIGHT", -10, 80 + (i - 1) * 40) -- 调整位置以适应新布局
     replyButton:SetText(preset.name)
     replyButton:SetScript("OnClick", function()
       local contactName = ChatManager.currentContact
@@ -280,11 +279,11 @@ end
 local function CreateMessageInput()
   -- 创建消息输入框，包含 BackdropTemplate
   local messageInput = CreateFrame("EditBox", nil, frame, "InputBoxTemplate, BackdropTemplate")
-  messageInput:SetSize(400, 25)
+  messageInput:SetSize(500, 30)
   messageInput:SetPoint("BOTTOMLEFT", 20, 20)
   messageInput:SetAutoFocus(false)
   messageInput:SetMaxLetters(255)
-  messageInput:SetTextInsets(5, 5, 5, 5)
+  messageInput:SetTextInsets(10, 10, 10, 10)
   messageInput:SetBackdrop({
     bgFile = "Interface/ChatFrame/ChatFrameBackground",
     edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
@@ -293,11 +292,12 @@ local function CreateMessageInput()
     edgeSize = 16,
     insets = { left = 4, right = 4, top = 4, bottom = 4 }
   })
-  messageInput:SetBackdropColor(0, 0, 0, 0.5)
+  messageInput:SetBackdropColor(0, 0, 0, 0.7) -- 增加透明度
+  messageInput:SetFontObject("ChatFontNormal")
 
   -- 创建发送按钮
   local sendButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
-  sendButton:SetSize(80, 25)
+  sendButton:SetSize(100, 30)
   sendButton:SetPoint("LEFT", messageInput, "RIGHT", 10, 0)
   sendButton:SetText("发送")
   sendButton:SetScript("OnClick", function()
@@ -324,7 +324,7 @@ end
 -- 创建删除记录按钮
 local function CreateDeleteButton()
   local deleteButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
-  deleteButton:SetSize(120, 25)
+  deleteButton:SetSize(140, 30)
   deleteButton:SetPoint("BOTTOMRIGHT", -20, 20)
   deleteButton:SetText("删除记录")
   deleteButton:SetScript("OnClick", function()

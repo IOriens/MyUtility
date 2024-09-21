@@ -15,13 +15,15 @@ ChatManagerDB = ChatManagerDB or {
   autoReplies = {
 
   },
-  currentContact = nil
+  currentContact = nil,
+  framePosition = nil -- 添加用于保存窗口位置的字段
 }
 
 local replyPresets = {
-  { name = "问候", message = "你好！" },
-  { name = "在吗", message = "你现在有空吗？" },
-  { name = "稍后联系", message = "稍后再联系你。" }
+  { name = "好的", message = "好的" },
+  { name = "论述", message = "一星材料即可，一周只能吃一个，可以多做几个屯着~" },
+  { name = "done", message = "做好了~" },
+  { name = "不客气", message = "~" }
 }
 
 local autoReplies = {
@@ -29,8 +31,6 @@ local autoReplies = {
   ["帮忙"] = "我现在不方便，稍后联系你。",
   ["组队"] = "好的，我马上来。"
 }
-
-
 
 -- 设置当前联系人为SavedVariables中的值
 ChatManager.currentContact = ChatManagerDB.currentContact
@@ -43,7 +43,27 @@ frame.title = frame:CreateFontString(nil, "OVERLAY")
 frame.title:SetFontObject("GameFontHighlight")
 frame.title:SetPoint("LEFT", frame.TitleBg, "LEFT", 5, 0)
 frame.title:SetText("私聊管理窗口")
-frame:Hide()
+-- 移除 frame:Hide() 使窗口默认显示
+
+-- 使窗口可拖动
+frame:SetMovable(true)
+frame:EnableMouse(true)
+frame:RegisterForDrag("LeftButton")
+frame:SetScript("OnDragStart", function(self)
+  self:StartMoving()
+end)
+frame:SetScript("OnDragStop", function(self)
+  self:StopMovingOrSizing()
+  -- 保存窗口位置到数据库
+  local point, relativeTo, relativePoint, xOfs, yOfs = self:GetPoint()
+  ChatManagerDB.framePosition = { point, relativePoint, xOfs, yOfs }
+end)
+
+-- 恢复窗口位置
+if ChatManagerDB.framePosition then
+  frame:ClearAllPoints()
+  frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition[3], ChatManagerDB.framePosition[4])
+end
 
 -- 创建左侧联系人列表
 local contactsScrollFrame = CreateFrame("ScrollFrame", nil, frame, "UIPanelScrollFrameTemplate")
@@ -333,6 +353,9 @@ local function Initialize()
   else
     UpdateContacts()
   end
+
+  -- 默认显示窗口
+  frame:Show()
 end
 
 -- 处理聊天事件

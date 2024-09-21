@@ -10,17 +10,19 @@ ChatManagerDB = ChatManagerDB or {
   contacts = {},
   chats = {},
   presets = {
-    { name = "问候", message = "你好！" },
-    { name = "在吗", message = "你现在有空吗？" },
-    { name = "稍后联系", message = "稍后再联系你。" }
+
   },
   autoReplies = {
-    ["1"] = "在的",
-    ["帮忙"] = "我现在不方便，稍后联系你。",
-    ["组队"] = "好的，我马上来。"
+
   },
   currentContact = nil
 }
+
+
+
+
+
+
 -- 设置当前联系人为SavedVariables中的值
 ChatManager.currentContact = ChatManagerDB.currentContact
 
@@ -53,65 +55,11 @@ chatFrame:SetSize(370, 300)
 chatScrollFrame:SetScrollChild(chatFrame)
 
 -- 当前选中的联系人高亮颜色
-local highlightColor = { 0, 1, 0, 0.5 }   -- 绿色半透明
+local highlightColor = { 0, 1, 0, 0.5 }     -- 绿色半透明
 local defaultBackdropColor = { 0, 0, 0, 0 } -- 无背景
 
--- 更新联系人列表函数
-local function UpdateContacts()
-  -- 清除旧的联系人按钮
-  if contactsFrame.buttons then
-    for _, button in pairs(contactsFrame.buttons) do
-      button:Hide()
-    end
-  else
-    contactsFrame.buttons = {}
-  end
-
-  -- 获取联系人并排序（按最近沟通时间降序）
-  local contacts = ChatManagerDB.contacts
-  table.sort(contacts, function(a, b)
-    return a.lastContact > b.lastContact
-  end)
-
-  -- 创建新的联系人按钮
-  for i, contact in ipairs(contacts) do
-    local button = contactsFrame.buttons[i] or CreateFrame("Button", nil, contactsFrame, "UIPanelButtonTemplate")
-    contactsFrame.buttons[i] = button
-    button:SetSize(180, 30)
-    button:SetPoint("TOPLEFT", 0, -35 * (i - 1))
-    button:SetText(contact.name .. (contact.unread > 0 and (" (" .. contact.unread .. ")") or ""))
-
-    -- 设置背景以便高亮显示
-    if not button.backdrop then
-      button:SetBackdrop({
-        bgFile = "Interface/Tooltips/UI-Tooltip-Background",
-        edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
-        tile = true,
-        tileSize = 16,
-        edgeSize = 16,
-        insets = { left = 4, right = 4, top = 4, bottom = 4 }
-      })
-      button:SetBackdropColor(unpack(defaultBackdropColor))
-    end
-
-    -- 高亮显示当前联系人
-    if contact.name == ChatManager.currentContact then
-      button:SetBackdropColor(unpack(highlightColor))
-    else
-      button:SetBackdropColor(unpack(defaultBackdropColor))
-    end
-
-    -- 设置按钮点击事件
-    button:SetScript("OnClick", function()
-      -- 显示与该联系人的聊天记录
-      ShowChatWith(contact.name)
-    end)
-    button:Show()
-  end
-end
-
 -- 显示聊天记录函数
-local function ShowChatWith(contactName)
+function ShowChatWith(contactName)
   if not contactName then
     ChatManager.currentContact = nil
     ChatManagerDB.currentContact = nil
@@ -161,11 +109,66 @@ local function ShowChatWith(contactName)
   UpdateContacts()
 end
 
+-- 更新联系人列表函数
+function UpdateContacts()
+  -- 清除旧的联系人按钮
+  if contactsFrame.buttons then
+    for _, button in pairs(contactsFrame.buttons) do
+      button:Hide()
+    end
+  else
+    contactsFrame.buttons = {}
+  end
+
+  -- 获取联系人并排序（按最近沟通时间降序）
+  local contacts = ChatManagerDB.contacts
+  table.sort(contacts, function(a, b)
+    return a.lastContact > b.lastContact
+  end)
+
+  -- 创建新的联系人按钮
+  for i, contact in ipairs(contacts) do
+    local button = contactsFrame.buttons[i] or
+        CreateFrame("Button", nil, contactsFrame, "UIPanelButtonTemplate, BackdropTemplate")
+    contactsFrame.buttons[i] = button
+    button:SetSize(180, 30)
+    button:SetPoint("TOPLEFT", 0, -35 * (i - 1))
+    button:SetText(contact.name .. (contact.unread > 0 and (" (" .. contact.unread .. ")") or ""))
+
+    -- 设置背景以便高亮显示
+    if not button.backdrop then
+      button:SetBackdrop({
+        bgFile = "Interface/Tooltips/UI-Tooltip-Background",
+        edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
+        tile = true,
+        tileSize = 16,
+        edgeSize = 16,
+        insets = { left = 4, right = 4, top = 4, bottom = 4 }
+      })
+      button:SetBackdropColor(unpack(defaultBackdropColor))
+    end
+
+    -- 高亮显示当前联系人
+    if contact.name == ChatManager.currentContact then
+      button:SetBackdropColor(unpack(highlightColor))
+    else
+      button:SetBackdropColor(unpack(defaultBackdropColor))
+    end
+
+    -- 设置按钮点击事件
+    button:SetScript("OnClick", function()
+      -- 显示与该联系人的聊天记录
+      ShowChatWith(contact.name)
+    end)
+    button:Show()
+  end
+end
+
 -- 记录聊天函数
 function RecordChat(sender, receiver, message)
   -- 使用当前角色名替代“你”
   local contactName = sender == ChatManager.playerName and receiver or sender
-  print('11')
+
   -- 更新联系人列表
   local contacts = ChatManagerDB.contacts
   local contact = nil
@@ -184,34 +187,29 @@ function RecordChat(sender, receiver, message)
       contact.unread = (contact.unread or 0) + 1
     end
   end
-  print('22')
 
   -- 记录聊天消息
   ChatManagerDB.chats[contactName] = ChatManagerDB.chats[contactName] or {}
-  print('22-1')
   table.insert(ChatManagerDB.chats[contactName], {
     sender = sender,
     message = message,
     time = time()
   })
-  print('22-1')
 
   -- 如果当前聊天对象是该联系人，则重置未读计数并更新聊天显示
   if contactName == ChatManager.currentContact and sender ~= ChatManager.playerName then
-    print('22-2')
     contact.unread = 0
     ShowChatWith(contactName)
-
   else
-    print('22-3')
     UpdateContacts()
   end
-  print('33')
 end
 
 -- 自动回复函数
 function CheckAutoReply(sender, message)
   for keyword, reply in pairs(ChatManagerDB.autoReplies) do
+    print("keyword: " .. keyword)
+    print("reply: " .. reply)
     if string.find(message, keyword) then
       SendChatMessage(reply, "WHISPER", nil, sender)
       RecordChat(ChatManager.playerName, sender, reply)
@@ -311,6 +309,19 @@ end
 
 -- 初始化函数
 local function Initialize()
+
+  ChatManagerDB.presets = {
+    { name = "问候", message = "你好！" },
+    { name = "在吗", message = "你现在有空吗？" },
+    { name = "稍后联系", message = "稍后再联系你。" }
+  }
+  
+  ChatManagerDB.autoReplies = {
+    ["挺好"] = "在的",
+    ["帮忙"] = "我现在不方便，稍后联系你。",
+    ["组队"] = "好的，我马上来。"
+  }
+
   -- 创建消息输入框和发送按钮
   CreateMessageInput()
 
@@ -334,21 +345,20 @@ eventFrame:RegisterEvent("CHAT_MSG_WHISPER")
 eventFrame:RegisterEvent("CHAT_MSG_WHISPER_INFORM")
 eventFrame:RegisterEvent("ADDON_LOADED")
 eventFrame:SetScript("OnEvent", function(self, event, ...)
-  print("event: " .. event)
   if event == "ADDON_LOADED" then
     local addonName = ...
     if addonName == "ChatManager" then
+
       Initialize()
     end
   elseif event == "CHAT_MSG_WHISPER" then
-  
     print("1")
     local message, sender = ...
     print("2")
     RecordChat(sender, ChatManager.playerName, message)
     print("3")
     CheckAutoReply(sender, message)
-    print("CHAT_MSG_WHISPER" .. sender .. message)
+    print("4")
   elseif event == "CHAT_MSG_WHISPER_INFORM" then
     local message, receiver = ...
     RecordChat(ChatManager.playerName, receiver, message)

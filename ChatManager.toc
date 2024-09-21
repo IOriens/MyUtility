@@ -1,0 +1,7 @@
+## Interface: 100100
+## Title: ChatManager
+## Notes: 私聊管理插件
+## Author: 您的名字
+## SavedVariables: ChatManagerDB
+
+ChatManager.lua

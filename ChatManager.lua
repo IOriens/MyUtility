@@ -57,7 +57,8 @@ end)
 -- 恢复窗口位置
 if ChatManagerDB.framePosition then
   frame:ClearAllPoints()
-  frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition[3], ChatManagerDB.framePosition[4])
+  frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition
+    [3], ChatManagerDB.framePosition[4])
 end
 
 -- 创建左侧联系人列表
@@ -83,8 +84,8 @@ local highlightColor = { 0, 1, 0, 0.5 }     -- 绿色半透明
 local defaultBackdropColor = { 0, 0, 0, 0 } -- 无背景
 
 -- 定义消息颜色
-local playerMessageColor = {0, 1, 0, 1}     -- 绿色
-local contactMessageColor = {0, 0.5, 1, 1}  -- 蓝色
+local playerMessageColor = { 0, 1, 0, 1 }    -- 绿色
+local contactMessageColor = { 0, 0.5, 1, 1 } -- 蓝色
 
 -- 显示聊天记录函数
 function ShowChatWith(contactName)
@@ -122,14 +123,14 @@ function ShowChatWith(contactName)
     msg:SetWidth(430) -- 设置消息宽度以适应新布局
     msg:SetJustifyH("LEFT")
     msg:SetPoint("TOPLEFT", 10, -10 - (i - 1) * 20)
-    
+
     -- 根据发送者设置颜色
     if chat.sender == ChatManager.playerName then
       msg:SetTextColor(unpack(playerMessageColor))
     else
       msg:SetTextColor(unpack(contactMessageColor))
     end
-    
+
     msg:SetText(chat.sender .. " [" .. date("%H:%M:%S", chat.time) .. "]: " .. chat.message)
     msg:Show()
   end

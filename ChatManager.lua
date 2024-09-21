@@ -18,8 +18,17 @@ ChatManagerDB = ChatManagerDB or {
   currentContact = nil
 }
 
+local replyPresets = {
+  { name = "问候", message = "你好！" },
+  { name = "在吗", message = "你现在有空吗？" },
+  { name = "稍后联系", message = "稍后再联系你。" }
+}
 
-
+local autoReplies = {
+  ["1"] = "在的",
+  ["帮忙"] = "我现在不方便，稍后联系你。",
+  ["组队"] = "好的，我马上来。"
+}
 
 
 
@@ -207,7 +216,7 @@ end
 
 -- 自动回复函数
 function CheckAutoReply(sender, message)
-  for keyword, reply in pairs(ChatManagerDB.autoReplies) do
+  for keyword, reply in pairs(autoReplies) do
     print("keyword: " .. keyword)
     print("reply: " .. reply)
     if string.find(message, keyword) then
@@ -220,7 +229,7 @@ end
 
 -- 创建预设回复按钮
 local function CreatePresetReplyButtons()
-  for i, preset in ipairs(ChatManagerDB.presets) do
+  for i, preset in ipairs(replyPresets) do
     local replyButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
     replyButton:SetSize(100, 25)
     replyButton:SetPoint("BOTTOMRIGHT", -10, 10 + (i - 1) * 35)
@@ -309,19 +318,6 @@ end
 
 -- 初始化函数
 local function Initialize()
-
-  ChatManagerDB.presets = {
-    { name = "问候", message = "你好！" },
-    { name = "在吗", message = "你现在有空吗？" },
-    { name = "稍后联系", message = "稍后再联系你。" }
-  }
-  
-  ChatManagerDB.autoReplies = {
-    ["挺好"] = "在的",
-    ["帮忙"] = "我现在不方便，稍后联系你。",
-    ["组队"] = "好的，我马上来。"
-  }
-
   -- 创建消息输入框和发送按钮
   CreateMessageInput()
 
@@ -348,17 +344,16 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
   if event == "ADDON_LOADED" then
     local addonName = ...
     if addonName == "ChatManager" then
-
       Initialize()
     end
   elseif event == "CHAT_MSG_WHISPER" then
-    print("1")
+
     local message, sender = ...
-    print("2")
+
     RecordChat(sender, ChatManager.playerName, message)
-    print("3")
+
     CheckAutoReply(sender, message)
-    print("4")
+
   elseif event == "CHAT_MSG_WHISPER_INFORM" then
     local message, receiver = ...
     RecordChat(ChatManager.playerName, receiver, message)
@@ -366,8 +361,8 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
 end)
 
 -- 显示/隐藏插件窗口
-SLASH_CHATMANAGER1 = "/chatmanager"
-SlashCmdList["CHATMANAGER"] = function()
+SLASH_CM1 = "/cm"
+SlashCmdList["CM"] = function()
   if frame:IsShown() then
     frame:Hide()
   else

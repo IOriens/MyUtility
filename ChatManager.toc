@@ -5,3 +5,4 @@
 ## SavedVariables: ChatManagerDB
 
 ChatManager.lua
+ToggleButton.lua

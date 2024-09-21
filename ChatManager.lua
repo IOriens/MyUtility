@@ -36,6 +36,9 @@ ChatManager.currentContact = ChatManagerDB.currentContact
 
 -- 创建UI框架，使用更美观的模板
 local frame = CreateFrame("Frame", "ChatManagerFrame", UIParent, "UIPanelDialogTemplate")
+
+ChatManager.frame = frame
+
 frame:SetSize(800, 600)
 frame:SetPoint("CENTER")
 frame.title = frame:CreateFontString(nil, "OVERLAY")

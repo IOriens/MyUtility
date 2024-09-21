@@ -17,6 +17,9 @@ ChatManagerDB = ChatManagerDB or {
 
 local replyPresets = {
   { name = "好的", message = "好的" },
+  { name = "锻造", message = "锻造下单给圣焰之辉，下单后给我说我去换号~" },
+  { name = "制皮", message = "制皮下单给Reducer，下单后给我说我去换号~" },
+  { name = "裁缝法杖", message = "法杖和裁缝下单给霜魄寒，下单后给我说我去换号~" },
   { name = "论述", message = "一星材料即可，一周只能吃一个，可以多做几个屯着~" },
   { name = "done", message = "做好了~" },
   { name = "不客气", message = "~" }
@@ -57,7 +60,8 @@ end)
 -- 恢复窗口位置
 if ChatManagerDB.framePosition then
   frame:ClearAllPoints()
-  frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition[3], ChatManagerDB.framePosition[4])
+  frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition
+  [3], ChatManagerDB.framePosition[4])
 end
 
 -- 添加背景纹理
@@ -130,7 +134,7 @@ local highlightColor = { 0.2, 0.6, 0.8, 0.5 } -- 调整为更柔和的蓝色
 local defaultBackdropColor = { 0, 0, 0, 0 }
 
 -- 定义消息颜色
-local playerMessageColor = { 0.9, 0.9, 0.9, 1 }    -- 亮灰色
+local playerMessageColor = { 0.9, 0.9, 0.9, 1 }     -- 亮灰色
 local contactMessageColor = { 0.46, 0.71, 0.77, 1 } -- 浅黄色
 
 -- 显示聊天记录函数
@@ -298,6 +302,8 @@ function RecordChat(sender, receiver, message)
   if contactName == ChatManager.currentContact and sender ~= ChatManager.playerName then
     contact.unread = 0
     ShowChatWith(contactName)
+  elseif contactName == ChatManager.currentContact then
+    ShowChatWith(contactName)
   else
     UpdateContacts()
   end
@@ -308,7 +314,7 @@ function CheckAutoReply(sender, message)
   for keyword, reply in pairs(autoReplies) do
     if string.find(message, keyword) then
       SendChatMessage(reply, "WHISPER", nil, sender)
-      RecordChat(ChatManager.playerName, sender, reply)
+      -- RecordChat(ChatManager.playerName, sender, reply)
       break
     end
   end
@@ -325,7 +331,7 @@ local function CreatePresetReplyButtons()
       local contactName = ChatManager.currentContact
       if contactName then
         SendChatMessage(preset.message, "WHISPER", nil, contactName)
-        RecordChat(ChatManager.playerName, contactName, preset.message)
+        -- RecordChat(ChatManager.playerName, contactName, preset.message)
         ShowChatWith(contactName)
       else
         print("请选择一个联系人进行回复。")
@@ -366,7 +372,7 @@ local function CreateMessageInput()
       local contactName = ChatManager.currentContact
       if contactName then
         SendChatMessage(message, "WHISPER", nil, contactName)
-        RecordChat(ChatManager.playerName, contactName, message)
+        -- RecordChat(ChatManager.playerName, contactName, message)
         ShowChatWith(contactName)
         messageInput:SetText("")
       else
@@ -432,6 +438,7 @@ local function Initialize()
   CreateDeleteButton()
 
   -- 显示当前联系人聊天记录（如果有）
+  -- print("Initialize当前联系人：" .. ChatManager.currentContact)
   if ChatManager.currentContact then
     ShowChatWith(ChatManager.currentContact)
   else

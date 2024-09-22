@@ -18,7 +18,7 @@ ChatManagerDB = ChatManagerDB or {
 local replyPresets = {
   { name = "好的", message = "好的" },
   { name = "对的", message = "对的" },
-  { name = "不会", message = "做不了哈～" },
+  { name = "不会", message = "不会做哈～" },
   { name = "都行", message = "都行" },
   { name = "done", message = "做好了，请在邮箱查收~" },
   { name = "不客气", message = "~" },
@@ -30,9 +30,9 @@ local replyPresets = {
 }
 
 local autoReplies = {
-  ["1"] = "在的",
+  ["1"] = "在的（自动回复～）",
   ["材料"] =
-  "材料点这个打开 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r",
+  "制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r，做法杖要3星材料2星公函2星美化，做论述用最便宜的材料",
   -- ["帮忙"] = "我现在不方便，稍后联系你。",
   -- ["组队"] = "好的，我马上来。"
 }
@@ -65,7 +65,7 @@ end)
 if ChatManagerDB.framePosition then
   frame:ClearAllPoints()
   frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition
-  [3], ChatManagerDB.framePosition[4])
+    [3], ChatManagerDB.framePosition[4])
 end
 
 -- 添加背景纹理

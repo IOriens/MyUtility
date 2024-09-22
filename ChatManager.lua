@@ -26,7 +26,7 @@ local replyPresets = {
   { name = "锻造下单", message = "锻造下单给圣焰之辉，下单后给我说我去换号~" },
   { name = "制皮下单", message = "制皮下单给Reducer，下单后给我说我去换号~" },
   { name = "裁缝法杖", message = "法杖5k包619，8k包636，免费做606，3星材料2星公函2星美化，法杖和裁缝下单给霜魄寒，指定5星下单后给我说我去换号~" },
-  { name = "论述", message = "论述一星材料即可，一周只能吃一个，可以多做几个屯着~，全专业的都能做" },
+  { name = "论述", message = "论述一星材料即可，全专业的都能免费做。注意：每个专业一周只能吃一个，可以多做几个屯着~" },
 }
 
 local autoReplies = {
@@ -65,7 +65,7 @@ end)
 if ChatManagerDB.framePosition then
   frame:ClearAllPoints()
   frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition
-  [3], ChatManagerDB.framePosition[4])
+    [3], ChatManagerDB.framePosition[4])
 end
 
 -- 添加背景纹理
@@ -231,8 +231,11 @@ function UpdateContacts()
     return a.lastContact > b.lastContact
   end)
 
-  -- 创建新的联系人按钮
+  -- 创建新的联系人按钮，只显示前十个联系人
   for i, contact in ipairs(contacts) do
+    if i > 10 then
+      break
+    end
     local button = contactsFrame.buttons[i] or
         CreateFrame("Button", nil, contactsFrame, "UIPanelButtonTemplate, BackdropTemplate")
     contactsFrame.buttons[i] = button
@@ -273,7 +276,7 @@ function UpdateContacts()
   end
 
   -- 更新滚动范围
-  contactsFrame:SetHeight(#contacts * 35 + 10)
+  contactsFrame:SetHeight(math.min(#contacts, 10) * 35 + 10)
 end
 
 -- 记录聊天函数
@@ -438,7 +441,7 @@ end
 
 -- 初始化函数
 local function Initialize()
-  -- 将窗口添加到 UISpecialFrames 以支持 ESC 关闭
+  -- 将窗口添加到 UISpecialFrames 以支持ESC 关闭
   table.insert(UISpecialFrames, "ChatManagerFrame")
 
   -- 创建消息输入框和发送按钮

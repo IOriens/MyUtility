@@ -20,7 +20,7 @@ local replyPresets = {
   { name = "对的", message = "对的" },
   { name = "不会", message = "做不了哈～" },
   { name = "都行", message = "都行" },
-  { name = "done", message = "做好了~" },
+  { name = "done", message = "做好了，请在邮箱查收~" },
   { name = "不客气", message = "~" },
   { name = "做啥", message = "做啥来着~" },
   { name = "锻造下单", message = "锻造下单给圣焰之辉，下单后给我说我去换号~" },

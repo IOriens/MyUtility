@@ -61,6 +61,35 @@ frame:SetScript("OnDragStop", function(self)
   ChatManagerDB.framePosition = { point, relativePoint, xOfs, yOfs }
 end)
 
+
+-- 注册 GLOBAL_MOUSE_DOWN 事件
+frame:RegisterEvent("GLOBAL_MOUSE_DOWN")
+
+-- 设置点击事件处理函数
+frame:SetScript("OnEvent", function(self, event, ...)
+  if event == "GLOBAL_MOUSE_DOWN" then
+    local button, mouseFocus = ...
+    if mouseFocus and (mouseFocus == self or self:IsChild(mouseFocus)) then
+      -- 点击在窗口内，提升层级
+      if self:GetFrameStrata() ~= "FULLSCREEN_DIALOG" then
+        self:SetFrameStrata("FULLSCREEN_DIALOG")
+      end
+    else
+      -- 点击在窗口外，降低层级
+      if self:GetFrameStrata() ~= "MEDIUM" then
+        self:SetFrameStrata("MEDIUM")
+      end
+    end
+  end
+end)
+
+-- 当窗口被点击时，提升层级
+frame:SetScript("OnMouseDown", function(self)
+  if self:GetFrameStrata() ~= "FULLSCREEN_DIALOG" then
+    self:SetFrameStrata("FULLSCREEN_DIALOG")
+  end
+end)
+
 -- 恢复窗口位置
 if ChatManagerDB.framePosition then
   frame:ClearAllPoints()

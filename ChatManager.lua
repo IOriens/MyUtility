@@ -18,6 +18,7 @@ ChatManagerDB = ChatManagerDB or {
 local replyPresets = {
   { name = "好的", message = "好的" },
   { name = "对的", message = "对的" },
+  { name = "不会", message = "做不了哈～" },
   { name = "都行", message = "都行" },
   { name = "done", message = "做好了~" },
   { name = "不客气", message = "~" },

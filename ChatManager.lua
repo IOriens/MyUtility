@@ -65,7 +65,7 @@ end)
 if ChatManagerDB.framePosition then
   frame:ClearAllPoints()
   frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition
-    [3], ChatManagerDB.framePosition[4])
+  [3], ChatManagerDB.framePosition[4])
 end
 
 -- 添加背景纹理
@@ -146,6 +146,29 @@ local defaultBackdropColor = { 0, 0, 0, 0 }
 -- 定义消息颜色
 local playerMessageColor = { 0.9, 0.9, 0.9, 1 }     -- 亮灰色
 local contactMessageColor = { 0.46, 0.71, 0.77, 1 } -- 浅黄色
+
+-- 最大联系人数
+local MAX_CONTACTS = 20
+
+-- 限制联系人数量并删除过时的联系人和聊天记录
+local function LimitContacts()
+  local contacts = ChatManagerDB.contacts
+  table.sort(contacts, function(a, b)
+    return a.lastContact > b.lastContact
+  end)
+
+  while #contacts > MAX_CONTACTS do
+    local removed = table.remove(contacts)
+    if removed then
+      ChatManagerDB.chats[removed.name] = nil
+      -- 如果被移除的联系人是当前联系人，则清除当前联系人
+      if ChatManager.currentContact == removed.name then
+        ChatManager.currentContact = nil
+        ChatManagerDB.currentContact = nil
+      end
+    end
+  end
+end
 
 -- 显示聊天记录函数
 function ShowChatWith(contactName)
@@ -303,6 +326,9 @@ function RecordChat(sender, receiver, message)
     end
   end
 
+  -- 限制联系人数量
+  LimitContacts()
+
   -- 记录聊天消息
   ChatManagerDB.chats[contactName] = ChatManagerDB.chats[contactName] or {}
   table.insert(ChatManagerDB.chats[contactName], {
@@ -453,6 +479,9 @@ local function Initialize()
   -- 创建删除记录按钮
   -- 如果需要启用删除按钮，请取消以下行的注释
   -- CreateDeleteButton()
+
+  -- 限制联系人数量
+  LimitContacts()
 
   -- 显示当前联系人聊天记录（如果有）
   if ChatManager.currentContact then

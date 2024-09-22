@@ -148,7 +148,7 @@ local playerMessageColor = { 0.9, 0.9, 0.9, 1 }     -- 亮灰色
 local contactMessageColor = { 0.46, 0.71, 0.77, 1 } -- 浅黄色
 
 -- 最大联系人数
-local MAX_CONTACTS = 20
+local MAX_CONTACTS = 40
 
 -- 限制联系人数量并删除过时的联系人和聊天记录
 local function LimitContacts()

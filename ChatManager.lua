@@ -15,9 +15,22 @@ ChatManagerDB = ChatManagerDB or {
   framePosition = nil
 }
 
+local function meOrHim(name)
+  if name == UnitName("player") then
+    return "我"
+  else
+    return name .. "后，给我说下我去换号~"
+  end
+end
+
+local materialString =
+"制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r，做法杖要3星材料2星公函2星美化，做论述用最便宜的材料"
+
 local replyPresets = {
   { name = "好的", message = "好的" },
   { name = "对的", message = "对的" },
+  { name = "可以", message = "可以" },
+  { name = "材料", message = materialString },
   { name = "不会", message = "不会做哈～" },
   { name = "都行", message = "都行" },
   { name = "done", message = "做好了，请在邮箱查收~" },
@@ -25,14 +38,16 @@ local replyPresets = {
   { name = "做啥", message = "做啥来着~" },
   { name = "锻造下单", message = "锻造下单给圣焰之辉，下单后给我说我去换号~" },
   { name = "制皮下单", message = "制皮下单给Reducer，下单后给我说我去换号~" },
-  { name = "裁缝法杖", message = "法杖5k包619，8k包636，免费做606和590，3星材料2星公函2星美化，法杖和裁缝下单给霜魄寒，指定5星下单后给我说我去换号~" },
+  { name = "法杖布甲", message = "法杖5k包619，8k包636，免费做606和590，自己买3星材料2星公函2星美化，做好纹章，法杖和布甲指定5星下单给" .. meOrHim("霜魄寒") },
   { name = "论述", message = "论述一星材料即可，全专业的都能免费做。注意：每个专业一周只能吃一个，可以多做几个屯着~" },
 }
 
+
+
 local autoReplies = {
   ["1"] = "在的（自动回复～）",
-  ["材料"] =
-  "制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r，做法杖要3星材料2星公函2星美化，做论述用最便宜的材料",
+  ["材料"] = materialString,
+
   -- ["帮忙"] = "我现在不方便，稍后联系你。",
   -- ["组队"] = "好的，我马上来。"
 }
@@ -381,6 +396,10 @@ end
 function CheckAutoReply(sender, message)
   for keyword, reply in pairs(autoReplies) do
     if string.find(message, keyword) then
+      -- 如果 message 包含 1，且 message 长度大于 5，则不回复
+      if keyword == "1" and string.len(message) > 5 then
+        break
+      end
       SendChatMessage(reply, "WHISPER", nil, sender)
       -- RecordChat(ChatManager.playerName, sender, reply)
       break

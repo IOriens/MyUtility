@@ -31,7 +31,8 @@ local replyPresets = {
 
 local autoReplies = {
   ["1"] = "在的",
-  ["材料"] = "材料点这个打开 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r",
+  ["材料"] =
+  "材料点这个打开 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r",
   -- ["帮忙"] = "我现在不方便，稍后联系你。",
   -- ["组队"] = "好的，我马上来。"
 }
@@ -46,7 +47,7 @@ ChatManager.frame = frame
 frame:SetSize(800, 600)
 frame:SetPoint("CENTER")
 frame:SetFrameStrata("FULLSCREEN_DIALOG") -- 设置UI层级为最高
-frame:SetToplevel(true) -- 确保窗口在最上层
+frame:SetToplevel(true)                   -- 确保窗口在最上层
 frame:SetMovable(true)
 frame:EnableMouse(true)
 frame:RegisterForDrag("LeftButton")
@@ -63,7 +64,8 @@ end)
 -- 恢复窗口位置
 if ChatManagerDB.framePosition then
   frame:ClearAllPoints()
-  frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition[3], ChatManagerDB.framePosition[4])
+  frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition
+  [3], ChatManagerDB.framePosition[4])
 end
 
 -- 添加背景纹理
@@ -436,6 +438,9 @@ end
 
 -- 初始化函数
 local function Initialize()
+  -- 将窗口添加到 UISpecialFrames 以支持 ESC 关闭
+  table.insert(UISpecialFrames, "ChatManagerFrame")
+
   -- 创建消息输入框和发送按钮
   CreateMessageInput()
 
@@ -443,10 +448,10 @@ local function Initialize()
   CreatePresetReplyButtons()
 
   -- 创建删除记录按钮
+  -- 如果需要启用删除按钮，请取消以下行的注释
   -- CreateDeleteButton()
 
   -- 显示当前联系人聊天记录（如果有）
-  -- print("Initialize当前联系人：" .. ChatManager.currentContact)
   if ChatManager.currentContact then
     ShowChatWith(ChatManager.currentContact)
   else
@@ -454,15 +459,13 @@ local function Initialize()
   end
 
   -- 创建关闭按钮以支持ESC键关闭窗口
-  frame:EnableKeyboard(true)
-  frame:SetScript("OnKeyDown", function(self, key)
-    if key == "ESCAPE" then
-      self:Hide()
-    end
-  end)
+  -- 这部分已通过 UISpecialFrames 实现，因此无需额外处理
 
-  -- 默认显示窗口
-  frame:Show()
+  C_Timer.After(3, function()
+    --
+    -- 默认显示窗口
+    frame:Show()
+  end)
 end
 
 -- 处理聊天事件

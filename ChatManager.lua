@@ -27,16 +27,11 @@ local replyPresets = {
   { name = "制皮下单", message = "制皮下单给Reducer，下单后给我说我去换号~" },
   { name = "裁缝法杖", message = "法杖5k包619，8k包636，免费做606，3星材料2星公函2星美化，法杖和裁缝下单给霜魄寒，指定5星下单后给我说我去换号~" },
   { name = "论述", message = "论述一星材料即可，一周只能吃一个，可以多做几个屯着~，全专业的都能做" },
-
-
-
 }
 
 local autoReplies = {
   ["1"] = "在的",
-  ["材料"] =
-  "材料点这个打开 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r",
-
+  ["材料"] = "材料点这个打开 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r",
   -- ["帮忙"] = "我现在不方便，稍后联系你。",
   -- ["组队"] = "好的，我马上来。"
 }
@@ -45,18 +40,13 @@ local autoReplies = {
 ChatManager.currentContact = ChatManagerDB.currentContact
 
 -- 创建UI框架，使用更美观的模板
-local frame = CreateFrame("Frame", "ChatManagerFrame", UIParent, "UIPanelDialogTemplate")
-
+local frame = CreateFrame("Frame", "ChatManagerFrame", UIParent, "UIPanelDialogTemplate, BackdropTemplate")
 ChatManager.frame = frame
 
 frame:SetSize(800, 600)
 frame:SetPoint("CENTER")
-frame.title = frame:CreateFontString(nil, "OVERLAY")
-frame.title:SetFontObject("GameFontHighlightLarge")
-frame.title:SetPoint("TOP", frame, "TOP", 0, -6)
-frame.title:SetText("私聊管理窗口")
-
--- 使窗口可拖动
+frame:SetFrameStrata("FULLSCREEN_DIALOG") -- 设置UI层级为最高
+frame:SetToplevel(true) -- 确保窗口在最上层
 frame:SetMovable(true)
 frame:EnableMouse(true)
 frame:RegisterForDrag("LeftButton")
@@ -73,14 +63,19 @@ end)
 -- 恢复窗口位置
 if ChatManagerDB.framePosition then
   frame:ClearAllPoints()
-  frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition
-    [3], ChatManagerDB.framePosition[4])
+  frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition[3], ChatManagerDB.framePosition[4])
 end
 
 -- 添加背景纹理
 local bgTexture = frame:CreateTexture(nil, "BACKGROUND")
 bgTexture:SetAllPoints()
 bgTexture:SetColorTexture(0, 0, 0, 0.7) -- 半透明黑色背景
+
+-- 创建窗口标题
+frame.title = frame:CreateFontString(nil, "OVERLAY")
+frame.title:SetFontObject("GameFontHighlightLarge")
+frame.title:SetPoint("TOP", frame, "TOP", 0, -6)
+frame.title:SetText("私聊管理窗口")
 
 -- 创建左侧联系人列表的背景框架
 local contactsBg = CreateFrame("Frame", nil, frame, "BackdropTemplate")
@@ -448,7 +443,7 @@ local function Initialize()
   CreatePresetReplyButtons()
 
   -- 创建删除记录按钮
-  CreateDeleteButton()
+  -- CreateDeleteButton()
 
   -- 显示当前联系人聊天记录（如果有）
   -- print("Initialize当前联系人：" .. ChatManager.currentContact)
@@ -457,6 +452,14 @@ local function Initialize()
   else
     UpdateContacts()
   end
+
+  -- 创建关闭按钮以支持ESC键关闭窗口
+  frame:EnableKeyboard(true)
+  frame:SetScript("OnKeyDown", function(self, key)
+    if key == "ESCAPE" then
+      self:Hide()
+    end
+  end)
 
   -- 默认显示窗口
   frame:Show()

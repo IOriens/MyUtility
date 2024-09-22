@@ -17,18 +17,24 @@ ChatManagerDB = ChatManagerDB or {
 
 local replyPresets = {
   { name = "好的", message = "好的" },
-  { name = "锻造", message = "锻造下单给圣焰之辉，下单后给我说我去换号~" },
-  { name = "制皮", message = "制皮下单给Reducer，下单后给我说我去换号~" },
-  { name = "裁缝法杖", message = "法杖5k包619（2星美化），8k包636，免费做606，可加美化，全部3星材料2星公函，法杖和裁缝下单给霜魄寒，指定5星下单后给我说我去换号~" },
-  { name = "论述", message = "论述一星材料即可，一周只能吃一个，可以多做几个屯着~，全专业的都能做" },
+  { name = "对的", message = "对的" },
+  { name = "都行", message = "都行" },
   { name = "done", message = "做好了~" },
+  { name = "不客气", message = "~" },
   { name = "做啥", message = "做啥来着~" },
-  { name = "不客气", message = "~" }
+  { name = "锻造下单", message = "锻造下单给圣焰之辉，下单后给我说我去换号~" },
+  { name = "制皮下单", message = "制皮下单给Reducer，下单后给我说我去换号~" },
+  { name = "裁缝法杖", message = "法杖5k包619，8k包636，免费做606，3星材料2星公函2星美化，法杖和裁缝下单给霜魄寒，指定5星下单后给我说我去换号~" },
+  { name = "论述", message = "论述一星材料即可，一周只能吃一个，可以多做几个屯着~，全专业的都能做" },
+
+
+
 }
 
 local autoReplies = {
   ["1"] = "在的",
-  ["材料"] = "材料点这个打开 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r",
+  ["材料"] =
+  "材料点这个打开 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r",
 
   -- ["帮忙"] = "我现在不方便，稍后联系你。",
   -- ["组队"] = "好的，我马上来。"
@@ -67,7 +73,7 @@ end)
 if ChatManagerDB.framePosition then
   frame:ClearAllPoints()
   frame:SetPoint(ChatManagerDB.framePosition[1], UIParent, ChatManagerDB.framePosition[2], ChatManagerDB.framePosition
-  [3], ChatManagerDB.framePosition[4])
+    [3], ChatManagerDB.framePosition[4])
 end
 
 -- 添加背景纹理
@@ -330,8 +336,8 @@ end
 local function CreatePresetReplyButtons()
   for i, preset in ipairs(replyPresets) do
     local replyButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
-    replyButton:SetSize(100, 30)
-    replyButton:SetPoint("BOTTOMRIGHT", -20 - ((i - 1) % 2) * 110, 60 + math.floor((i - 1) / 2) * 40)
+    replyButton:SetSize(80, 30)
+    replyButton:SetPoint("BOTTOMRIGHT", -20 - ((i - 1) % 2) * 90, 60 + math.floor((i - 1) / 2) * 40)
     replyButton:SetText(preset.name)
     replyButton:SetScript("OnClick", function()
       local contactName = ChatManager.currentContact

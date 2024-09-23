@@ -413,6 +413,7 @@ function CheckAutoReply(sender, message)
     if string.find(message, keyword) then
       -- 如果 message 包含 1，且 message 长度大于 5，则不回复
       if keyword == "1" and string.len(message) > 5 then
+        print("不回复：" .. message)
         break
       end
       SendChatMessage(reply, "WHISPER", nil, sender)

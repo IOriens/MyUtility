@@ -24,30 +24,41 @@ local function meOrHim(name)
 end
 
 local materialString =
-"制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r，做法杖要3星材料2星公函2星美化，做论述用最便宜的材料"
+-- "制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r，做法杖要3星材料2星公函2星美化，做论述用最便宜的材料"
+"制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r，做法杖要3星材料3星公函3星美化，做论述用最便宜的材料"
+
+
+local treiesString = "论述一星材料即可，全专业的都能免费做。注意：每个专业一周只能吃一个，可以多做几个屯着~"
 
 local replyPresets = {
   { name = "好的", message = "好的" },
   { name = "对的", message = "对的" },
   { name = "可以", message = "可以" },
+  { name = "三星", message = "要三星材料哈～" },
   { name = "材料", message = materialString },
   { name = "不会", message = "不会做哈～" },
+  { name = "工匠下单", message = "需要您自己去工匠联盟下单哈～" },
+  { name = "不包材料", message = "不包材料哈，需要自己去拍卖行买～" },
   { name = "都行", message = "都行" },
   { name = "done", message = "做好了，请在邮箱查收~" },
   { name = "不客气", message = "~" },
   { name = "做啥", message = "做啥来着~" },
   { name = "锻造下单", message = "锻造下单给圣焰之辉，下单后给我说我去换号~" },
   { name = "制皮下单", message = "制皮下单给Reducer，下单后给我说我去换号~" },
-  { name = "法杖布甲", message = "法杖5k包619，8k包636，免费做606和590，自己买3星材料2星公函2星美化，做好纹章，法杖和布甲指定5星下单给" .. meOrHim("霜魄寒") },
-  { name = "论述", message = "论述一星材料即可，全专业的都能免费做。注意：每个专业一周只能吃一个，可以多做几个屯着~" },
+  -- { name = "法杖布甲", message = "法杖5k包619，8k包636，免费做606和590，自己买3星材料2星公函2星美化，做好纹章，法杖和布甲指定5星下单给" .. meOrHim("霜魄寒") },
+  { name = "法杖布甲", message = "法杖免费包五星619和606，3k包五星636，自己买3星材料3星公函3星美化，做好纹章，法杖和布甲指定5星下单给" .. meOrHim("霜魄寒") },
+  { name = "论述", message = treiesString },
 }
 
 
 
 local autoReplies = {
   ["1"] = "在的（自动回复～）",
+  ["nga"] = "在的，下单就行～",
+  ["NGA"] = "在的，下单就行～",
+  ["几个"] = treiesString,
+  ["论述"] = treiesString,
   ["材料"] = materialString,
-
   -- ["帮忙"] = "我现在不方便，稍后联系你。",
   -- ["组队"] = "好的，我马上来。"
 }

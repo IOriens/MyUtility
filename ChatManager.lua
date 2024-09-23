@@ -40,7 +40,7 @@ local replyPresets = {
   { name = "工匠下单", message = "需要您自己去工匠联盟下单哈～" },
   { name = "不包材料", message = "不包材料哈，需要自己去拍卖行买～" },
   { name = "都行", message = "都行" },
-  { name = "done", message = "做好了，请在邮箱查收~" },
+  { name = "done", message = "做好了，请在邮箱查收~ （如有再造需求可以加我战网“夜间漫游#5845”）" },
   { name = "不客气", message = "~" },
   { name = "做啥", message = "做啥来着~" },
   { name = "锻造下单", message = "锻造下单给圣焰之辉，下单后给我说我去换号~" },

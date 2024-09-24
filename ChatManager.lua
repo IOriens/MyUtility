@@ -598,7 +598,7 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
     local message, sender = ...
     RecordChat(sender, ChatManager.playerName, message)
     CheckAutoReply(sender, message)
-    PlaySound(SOUNDKIT.TELL_MESSAGE)
+    -- PlaySound(SOUNDKIT.TELL_MESSAGE)
   elseif event == "CHAT_MSG_WHISPER_INFORM" then
     local message, receiver = ...
     RecordChat(ChatManager.playerName, receiver, message)

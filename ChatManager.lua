@@ -31,7 +31,7 @@ local materialString =
 
 local treiesString = "论述一星材料即可，全专业的都能免费做。注意：每个专业一周只能吃一个，可以多做几个屯着~"
 
-local fazhangString = "双手法杖(智力/敏捷)免费包五星619、606、590，3k包五星636，自己买3星材料3星公函3星美化，做好纹章，法杖和布甲指定5星下个人单给" .. meOrHim("霜魄寒")
+local fazhangString = "双手法杖(智力/敏捷)免费包五星619、606、590，3k包五星636，接再造，价格一样，自己买3星材料3星公函3星美化，做好纹章，，法杖和布甲指定5星下个人单给" .. meOrHim("霜魄寒")
 
 local replyPresets = {
 

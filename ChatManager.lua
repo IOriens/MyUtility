@@ -72,10 +72,14 @@ local replyPresets = {
 
 
 
-
+local canMakeString = "只会做双手法杖、PVP法杖、PVP长柄、各专业论述，其它都做不了哈～"
 
 local autoReplies = {
 
+  ["会吗"] = canMakeString,
+  ["做吗"] = canMakeString,
+  ["能做"] = canMakeString,
+  ["会做"] = canMakeString,
   ["佣金"] = "免费做，直接下单给我就行～",
   ["钱"] = "免费做，直接下单给我就行～",
   ["费"] = "免费做，直接下单给我就行～",

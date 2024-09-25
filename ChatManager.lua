@@ -76,10 +76,7 @@ local canMakeString = "只会做双手法杖、PVP法杖、PVP长柄、各专业
 
 local autoReplies = {
 
-  ["会吗"] = canMakeString,
-  ["做吗"] = canMakeString,
-  ["能做"] = canMakeString,
-  ["会做"] = canMakeString,
+  ["价格"] = "免费做，直接下单给我就行～",
   ["佣金"] = "免费做，直接下单给我就行～",
   ["钱"] = "免费做，直接下单给我就行～",
   ["费"] = "免费做，直接下单给我就行～",
@@ -125,7 +122,11 @@ local autoReplies = {
   ["搜索"] = gonghuiString,
   ["搜不到"] = gonghuiString,
   ["跨服"] = gonghuiString,
-  ["价格"] = "免费哈～",
+  ["会吗"] = canMakeString,
+  ["做吗"] = canMakeString,
+  ["能做"] = canMakeString,
+  ["会做"] = canMakeString,
+
 
 }
 

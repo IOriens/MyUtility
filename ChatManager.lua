@@ -65,7 +65,7 @@ local replyPresets = {
   -- （想放2星公函和美化需加钱至4k）
   { name = "法杖", message = fazhangString },
   { name = "论述", message = treiesString },
-  { name = "教学", message = "得去抖音搜下～" },
+  { name = "教学", message = "具体怎么做、用什么美化好这些问题得去抖音或者百度搜下，我这边不教学～" },
   { name = "免费", message = "免费做，直接下单给我就行～" },
   { name = "公会", message = gonghuiString },
 }

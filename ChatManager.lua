@@ -26,17 +26,18 @@ end
 local materialString =
 -- "制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r，做法杖要3星材料2星公函2星美化，做论述用最便宜的材料"
 -- （想放2星公函和美化需加钱至4k）
-"制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r，做法杖要3星材料3星公函3星美化，做论述用最便宜的材料"
+"制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r ，做法杖要3星材料3星公函3星美化方便再造，做论述用最便宜的材料"
 
 
 local treiesString =
 "论述一星材料即可，全专业的都能免费做。注意：每个专业一周只能吃一个，可以多做几个屯着~。制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r"
 
-local fazhangString = "双手法杖(智力/敏捷)免费包五星636、619、606、590，再造也是免费，可跨服制作，自己买3星材料3星公函3星美化，做好纹章，法杖和布甲指定5星下个人单给" ..
+local fazhangString = "双手法杖(智力/敏捷)免费包五星636、619、606、590，再造也是免费，可跨服制作，自己买3星材料3星公函3星美化，做好纹章，法杖指定5星下个人单给" ..
     meOrHim("霜魄寒")
 
 
-local gonghuiString = "跨服订单需要加我的公会|cffffd200|HclubFinder:ClubFinder-1-203805-707-59782982|h[公会: 夜间漫游]|h|r，搜不到可以加我战网“夜间漫游#5845”，我拉你进公会，申请通过后要按J键查看左上角邀请函进会"
+local gonghuiString =
+"跨服订单需要加我的公会|cffffd200|HclubFinder:ClubFinder-1-203805-707-59782982|h[公会: 夜间漫游]|h|r，搜不到可以加我战网“夜间漫游#5845”，我拉你进公会，申请通过后要按J键查看左上角邀请函进会"
 
 local replyPresets = {
 
@@ -60,7 +61,7 @@ local replyPresets = {
   { name = "制皮下单", message = "制皮下单给Reducer，下单后给我说我去换号~" },
   -- { name = "法杖布甲", message = "双手法杖5k包619，8k包636，免费做606和590，自己买3星材料2星公函2星美化，做好纹章，法杖和布甲指定5星下单给" .. meOrHim("霜魄寒") },
   -- （想放2星公函和美化需加钱至4k）
-  { name = "法杖布甲", message = fazhangString },
+  { name = "法杖", message = fazhangString },
   { name = "论述", message = treiesString },
   { name = "教学", message = "得去抖音搜下～" },
   { name = "公会", message = gonghuiString },
@@ -88,6 +89,7 @@ local autoReplies = {
   ["发给"] = "这个号直接下单就行",
   ["这个号"] = "是的，这个号直接下单就行",
   ["这号"] = "是的，这个号直接下单就行",
+
   ["619"] = fazhangString,
   ["公函"] = fazhangString,
   ["美化"] = fazhangString,
@@ -114,6 +116,7 @@ local autoReplies = {
   ["搜索"] = gonghuiString,
   ["搜不到"] = gonghuiString,
   ["跨服"] = gonghuiString,
+  ["价格"] = "免费哈～",
   ["1"] = "在的，下单就行～",
   -- ["帮忙"] = "我现在不方便，稍后联系你。",
   -- ["组队"] = "好的，我马上来。"

@@ -51,7 +51,7 @@ local replyPresets = {
   { name = "做啥", message = "做啥来着~" },
   { name = "done", message = "做好了，请在邮箱查收~ （如有再造需求可以加我战网“夜间漫游#5845”）" },
   { name = "不客气", message = "~" },
-  { name ="发我", message="下单给我就行（霜魄寒）"},
+  { name = "发我", message = "下单给我就行（霜魄寒）" },
   -- 介绍
   { name = "三星", message = "要三星材料哈～" },
   { name = "材料", message = materialString },
@@ -65,6 +65,7 @@ local replyPresets = {
   { name = "法杖", message = fazhangString },
   { name = "论述", message = treiesString },
   { name = "教学", message = "得去抖音搜下～" },
+  { name = "免费", message = "免费做，直接下单给我就行～" },
   { name = "公会", message = gonghuiString },
 }
 
@@ -87,7 +88,7 @@ local autoReplies = {
   ["副手"] = "不会做哈～",
   ["发谁"] = "给这个号直接下单就行",
   ["发给谁"] = "这个号直接下单就行",
-  
+
   -- ["发给"] = "这个号直接下单就行",
   ["这个号"] = "是的，这个号直接下单就行",
   ["这号"] = "是的，这个号直接下单就行",
@@ -119,7 +120,6 @@ local autoReplies = {
   ["搜不到"] = gonghuiString,
   ["跨服"] = gonghuiString,
   ["价格"] = "免费哈～",
-  ["1"] = "在的，下单就行～",
   -- ["帮忙"] = "我现在不方便，稍后联系你。",
   -- ["组队"] = "好的，我马上来。"
 }
@@ -466,13 +466,13 @@ end
 
 -- 自动回复函数
 function CheckAutoReply(sender, message)
+  if string.find(message, "1") and string.len(message) < 4 then
+    print("短消息直接回复在的：" .. message)
+    SendChatMessage("在的，直接下单给我就行～", "WHISPER", nil, sender)
+    return
+  end
   for keyword, reply in pairs(autoReplies) do
     if string.find(message, keyword) then
-      -- 如果 message 包含 1，且 message 长度大于 5，则不回复
-      if keyword == "1" and string.len(message) > 5 then
-        print("不回复：" .. message)
-        break
-      end
       SendChatMessage(reply, "WHISPER", nil, sender)
       -- RecordChat(ChatManager.playerName, sender, reply)
       break

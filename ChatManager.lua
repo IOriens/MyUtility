@@ -44,6 +44,7 @@ local replyPresets = {
   -- 常用
   { name = "好的", message = "好的" },
   { name = "对的", message = "对的" },
+  { name = "是的", message = "是的" },
   { name = "可以", message = "可以" },
   { name = "在的", message = "在的，下单就行～" },
   { name = "不会", message = "不会做哈～" },
@@ -53,7 +54,7 @@ local replyPresets = {
   { name = "不客气", message = "~" },
   { name = "发我", message = "下单给我就行（霜魄寒）" },
   -- 介绍
-  { name = "三星", message = "要三星材料哈～" },
+  { name = "三星", message = "要三星材料公函美化哈～" },
   { name = "材料", message = materialString },
   { name = "联盟下单", message = "需要您自己去工匠联盟下个人订单哈～" },
   { name = "不包材料", message = "不包材料哈，需要自己去拍卖行买～" },

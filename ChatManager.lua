@@ -29,10 +29,14 @@ local materialString =
 "制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r，做法杖要3星材料3星公函3星美化，做论述用最便宜的材料"
 
 
-local treiesString = "论述一星材料即可，全专业的都能免费做。注意：每个专业一周只能吃一个，可以多做几个屯着~"
+local treiesString =
+"论述一星材料即可，全专业的都能免费做。注意：每个专业一周只能吃一个，可以多做几个屯着~。制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r"
 
-local fazhangString = "双手法杖(智力/敏捷)免费包五星636、619、606、590，再造3k，可跨服制作，自己买3星材料3星公函3星美化，做好纹章，法杖和布甲指定5星下个人单给" ..
+local fazhangString = "双手法杖(智力/敏捷)免费包五星636、619、606、590，再造也是免费，可跨服制作，自己买3星材料3星公函3星美化，做好纹章，法杖和布甲指定5星下个人单给" ..
     meOrHim("霜魄寒")
+
+
+local gonghuiString = "跨服订单需要加我的公会“夜间漫游”，搜不到可以加我战网“夜间漫游#5845”，我拉你进公会，申请通过后要按J键查看左上角邀请函进会"
 
 local replyPresets = {
 
@@ -59,7 +63,10 @@ local replyPresets = {
   { name = "法杖布甲", message = fazhangString },
   { name = "论述", message = treiesString },
   { name = "教学", message = "得去抖音搜下～" },
+  { name = "公会", message = gonghuiString },
 }
+
+
 
 
 
@@ -68,22 +75,41 @@ local autoReplies = {
   ["nga"] = "在的，下单就行～",
   ["NGA"] = "在的，下单就行～",
   ["在"] = "在的，下单就行～",
+  ["怎么做"] = "自备材料工商联盟下单就行，免费做，具体怎么操作需要自己去抖音搜，回复“材料”查看所需材料",
+  ["发布了"] = "好的",
   ["发了"] = "好的",
+  ["发过去了"] = "好的",
+  ["下了"] = "好的",
   ["免费"] = "对的，直接下单就行～",
   ["副手"] = "不会做哈～",
+  ["这个号"] = "是的，这个号直接下单就行",
+  ["这号"] = "是的，这个号直接下单就行",
   ["619"] = fazhangString,
   ["公函"] = fazhangString,
   ["美化"] = fazhangString,
   ["法杖"] = fazhangString,
   ["几个"] = treiesString,
   ["论述"] = treiesString,
+  ["采矿"] = treiesString,
+  ["炼金"] = treiesString,
+  ["工程"] = treiesString,
+  ["裁缝"] = treiesString,
+  ["珠宝"] = treiesString,
+  ["附魔"] = treiesString,
+  ["制皮"] = treiesString,
+  ["剥皮"] = treiesString,
+  ["铭文"] = treiesString,
+  ["挖草"] = treiesString,
+  ["锻造"] = treiesString,
   ["无限"] = treiesString,
   ["一周"] = treiesString,
   ["每周"] = treiesString,
   ["吃"] = treiesString,
   ["材料"] = materialString,
-  ["小号"] = "跨服订单需要加我的公会“夜间漫游”，搜不到可以加我战网“夜间漫游#5845”",
-  ["跨服"] = "跨服订单需要加我的公会“夜间漫游”，搜不到可以加我战网“夜间漫游#5845”",
+  ["小号"] = gonghuiString,
+  ["搜索"] = gonghuiString,
+  ["搜不到"] = gonghuiString,
+  ["跨服"] = gonghuiString,
   ["1"] = "在的，下单就行～",
   -- ["帮忙"] = "我现在不方便，稍后联系你。",
   -- ["组队"] = "好的，我马上来。"

@@ -65,7 +65,7 @@ local replyPresets = {
   { keyword = "不会", reply = "不会做哈～" },
   { keyword = "都行", reply = "都行" },
   { keyword = "做啥", reply = "做啥来着~" },
-  { keyword = "done", reply = "做好了，请在邮箱查收~ （如有再造需求可以加我战网“夜间漫游#5845”）" },
+  -- { keyword = "done", reply = "做好了，请在邮箱查收~ （如有再造需求可以加我战网“夜间漫游#5845”）" },
   { keyword = "不客气", reply = "~" },
   { keyword = "发我", reply = itsMeString },
   -- 介绍

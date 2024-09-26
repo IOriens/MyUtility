@@ -68,6 +68,7 @@ local replyPresets = {
   { keyword = "教学", reply = "具体怎么做、用什么美化好这些问题得去抖音或者百度搜下，我这边不教学～" },
   { keyword = "免费", reply = "免费做，直接下单给我就行，人在秒做～" },
   { keyword = "公会", reply = gonghuiString },
+  { keyword = "公开订单", reply = "每人每天只能接4个公开订单。。" },
 }
 
 local canMakeString = "只会做双手法杖、PVP法杖、PVP长柄、各专业论述，其它都做不了哈～"

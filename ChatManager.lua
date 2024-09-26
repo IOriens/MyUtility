@@ -33,15 +33,26 @@ local treiesString =
 "论述一星材料即可，全专业的都能免费做。注意：每个专业一周只能吃一个，可以多做几个屯着~。制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r"
 
 local fazhangString = "双手法杖(智力/敏捷)免费包五星636、619、606、590，再造也是免费，可跨服制作，自己买3星材料3星公函3星美化，做好纹章，法杖指定5星下个人单给" ..
-    meOrHim("霜魄寒").. "。人在，材料对秒做，不对自动退单，不教学~"
+    meOrHim("霜魄寒") .. "。人在，材料对秒做，不对自动退单，不教学~"
 
 
 local gonghuiString =
 "跨服订单需要加我的公会|cffffd200|HclubFinder:ClubFinder-1-203805-707-59782982|h[公会: 夜间漫游]|h|r，搜不到可以加我战网“夜间漫游#5845”，我拉你进公会，申请通过后要按J键查看左上角邀请函进会"
 
+local byPassStrings = {
+  "好的",
+  "ok",
+  "OK",
+  "感谢",
+  "谢谢",
+  "谢谢你",
+  "多谢"
+}
+
 local replyPresets = {
 
   -- 常用
+  { keyword = "马上发", reply = "好的" },
   { keyword = "好的", reply = "好的" },
   { keyword = "对的", reply = "对的" },
   { keyword = "是的", reply = "是的" },
@@ -54,7 +65,7 @@ local replyPresets = {
   { keyword = "不客气", reply = "~" },
   { keyword = "发我", reply = "下单给我就行（霜魄寒）" },
   -- 介绍
-  { keyword = "三星", reply = "要三星材料公函美化哈～" },
+  { keyword = "三星", reply = "要三星材料三星公函三星美化哈～" },
   { keyword = "材料", reply = materialString },
   { keyword = "联盟下单", reply = "需要您自己去工匠联盟下个人订单哈～" },
   { keyword = "不包材料", reply = "不包材料哈，需要自己去拍卖行买～" },
@@ -118,6 +129,8 @@ local autoReplies = {
   { keyword = "发给谁", reply = "这个号直接下单就行" },
   { keyword = "这个号", reply = "直接给这个号（霜魄寒）下单就行" },
   { keyword = "这号", reply = "直接给这个号（霜魄寒）下单就行" },
+  { keyword = "三星", reply = "要三星材料三星公函三星美化哈～" },
+  { keyword = "3星", reply = "要三星材料三星公函三星美化哈～" },
   { keyword = "619", reply = fazhangString },
   { keyword = "公函", reply = fazhangString },
   { keyword = "美化", reply = fazhangString },
@@ -501,8 +514,22 @@ function CheckAutoReply(sender, message)
     end
   end
 
+  for _, ar in ipairs(byPassStrings) do
+    if string.find(message, ar) then
+      print("跳过自动回复：" .. message)
+      return
+    end
+  end
+
   print("默认回复")
-  SendChatMessage("直接给我下单就行，法杖、PVP长柄全等级稳5，可再造，可加美化，全免费，三星材料三星公函三星美化秒做，不对自动退单，不教学～", "WHISPER", nil, sender)
+  -- 确保只发送一次默认回复
+  ChatManager.autoReplySent = ChatManager.autoReplySent or {}
+  if not ChatManager.autoReplySent[sender] then
+    SendChatMessage("直接给我下单就行，法杖、PVP长柄全等级稳5，可再造，可加美化，全免费，三星材料三星公函三星美化秒做，不对自动退单，不教学～", "WHISPER", nil, sender)
+    ChatManager.autoReplySent[sender] = true
+  else
+    print("已发送默认回复，不再重复发送。")
+  end
 end
 
 -- 创建预设回复按钮

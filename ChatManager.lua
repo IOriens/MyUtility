@@ -49,6 +49,8 @@ local byPassStrings = {
   "多谢"
 }
 
+local itsMeString = "下单给我就行（霜魄寒）"
+
 local replyPresets = {
 
   -- 常用
@@ -63,7 +65,7 @@ local replyPresets = {
   { keyword = "做啥", reply = "做啥来着~" },
   { keyword = "done", reply = "做好了，请在邮箱查收~ （如有再造需求可以加我战网“夜间漫游#5845”）" },
   { keyword = "不客气", reply = "~" },
-  { keyword = "发我", reply = "下单给我就行（霜魄寒）" },
+  { keyword = "发我", reply = itsMeString },
   -- 介绍
   { keyword = "三星", reply = "要三星材料三星公函三星美化哈～" },
   { keyword = "材料", reply = materialString },

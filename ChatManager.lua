@@ -33,7 +33,7 @@ local treiesString =
 "论述一星材料即可，全专业的都能免费做。注意：每个专业一周只能吃一个，可以多做几个屯着~。制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r"
 
 local fazhangString = "双手法杖(智力/敏捷)免费包五星636、619、606、590，再造也是免费，可跨服制作，自己买3星材料3星公函3星美化，做好纹章，法杖指定5星下个人单给" ..
-    meOrHim("霜魄寒")
+    meOrHim("霜魄寒").. "。人在，材料对秒做，不对自动退单，不教学~"
 
 
 local gonghuiString =
@@ -42,92 +42,109 @@ local gonghuiString =
 local replyPresets = {
 
   -- 常用
-  { name = "好的", message = "好的" },
-  { name = "对的", message = "对的" },
-  { name = "是的", message = "是的" },
-  { name = "可以", message = "可以" },
-  { name = "在的", message = "在的，下单就行～" },
-  { name = "不会", message = "不会做哈～" },
-  { name = "都行", message = "都行" },
-  { name = "做啥", message = "做啥来着~" },
-  { name = "done", message = "做好了，请在邮箱查收~ （如有再造需求可以加我战网“夜间漫游#5845”）" },
-  { name = "不客气", message = "~" },
-  { name = "发我", message = "下单给我就行（霜魄寒）" },
+  { keyword = "好的", reply = "好的" },
+  { keyword = "对的", reply = "对的" },
+  { keyword = "是的", reply = "是的" },
+  { keyword = "可以", reply = "可以" },
+  { keyword = "在的", reply = "在的，下单就行～" },
+  { keyword = "不会", reply = "不会做哈～" },
+  { keyword = "都行", reply = "都行" },
+  { keyword = "做啥", reply = "做啥来着~" },
+  { keyword = "done", reply = "做好了，请在邮箱查收~ （如有再造需求可以加我战网“夜间漫游#5845”）" },
+  { keyword = "不客气", reply = "~" },
+  { keyword = "发我", reply = "下单给我就行（霜魄寒）" },
   -- 介绍
-  { name = "三星", message = "要三星材料公函美化哈～" },
-  { name = "材料", message = materialString },
-  { name = "联盟下单", message = "需要您自己去工匠联盟下个人订单哈～" },
-  { name = "不包材料", message = "不包材料哈，需要自己去拍卖行买～" },
+  { keyword = "三星", reply = "要三星材料公函美化哈～" },
+  { keyword = "材料", reply = materialString },
+  { keyword = "联盟下单", reply = "需要您自己去工匠联盟下个人订单哈～" },
+  { keyword = "不包材料", reply = "不包材料哈，需要自己去拍卖行买～" },
 
-  -- { name = "锻造下单", message = "锻造下单给圣焰之辉，下单后给我说我去换号~" },
-  -- { name = "制皮下单", message = "制皮下单给Reducer，下单后给我说我去换号~" },
-  -- { name = "法杖布甲", message = "双手法杖5k包619，8k包636，免费做606和590，自己买3星材料2星公函2星美化，做好纹章，法杖和布甲指定5星下单给" .. meOrHim("霜魄寒") },
+  -- { keyword = "锻造下单", reply = "锻造下单给圣焰之辉，下单后给我说我去换号~" },
+  -- { keyword = "制皮下单", reply = "制皮下单给Reducer，下单后给我说我去换号~" },
+  -- { keyword = "法杖布甲", reply = "双手法杖5k包619，8k包636，免费做606和590，自己买3星材料2星公函2星美化，做好纹章，法杖和布甲指定5星下单给" .. meOrHim("霜魄寒") },
   -- （想放2星公函和美化需加钱至4k）
-  { name = "法杖", message = fazhangString },
-  { name = "论述", message = treiesString },
-  { name = "教学", message = "具体怎么做、用什么美化好这些问题得去抖音或者百度搜下，我这边不教学～" },
-  { name = "免费", message = "免费做，直接下单给我就行～" },
-  { name = "公会", message = gonghuiString },
+  { keyword = "法杖", reply = fazhangString },
+  { keyword = "论述", reply = treiesString },
+  { keyword = "教学", reply = "具体怎么做、用什么美化好这些问题得去抖音或者百度搜下，我这边不教学～" },
+  { keyword = "免费", reply = "免费做，直接下单给我就行，人在秒做～" },
+  { keyword = "公会", reply = gonghuiString },
 }
-
-
 
 local canMakeString = "只会做双手法杖、PVP法杖、PVP长柄、各专业论述，其它都做不了哈～"
 
 local autoReplies = {
+  { keyword = "火炬", reply = "副手不会做哈～" },
+  { keyword = "副手", reply = "副手不会做哈～" },
+  -- 按优先级顺序排列
+  { keyword = "小号", reply = gonghuiString },
+  { keyword = "搜索", reply = gonghuiString },
+  { keyword = "搜不到", reply = gonghuiString },
+  { keyword = "跨服", reply = gonghuiString },
+  { keyword = "公会", reply = gonghuiString },
+  { keyword = "发布了", reply = "好的" },
+  { keyword = "发给你了", reply = "好的" },
+  { keyword = "发了", reply = "好的" },
+  { keyword = "发你了", reply = "好的" },
+  { keyword = "已发", reply = "好的" },
+  { keyword = "发过", reply = "好的" },
+  { keyword = "下了", reply = "好的" },
 
-  ["价格"] = "免费做，直接下单给我就行～",
-  ["佣金"] = "免费做，直接下单给我就行～",
-  ["钱"] = "免费做，直接下单给我就行～",
-  ["费"] = "免费做，直接下单给我就行～",
-  ["nga"] = "在的，下单就行～",
-  ["NGA"] = "在的，下单就行～",
-  ["在"] = "在的，下单就行～",
-  ["怎么做"] = "自备材料工商联盟下单就行，免费做，具体怎么操作需要自己去抖音搜，回复“材料”查看所需材料",
-  ["发布了"] = "好的",
-  ["发了"] = "好的",
-  ["已发"] = "好的",
-  ["发过去了"] = "好的",
-  ["下了"] = "好的",
-  ["免费"] = "对的，直接下单就行～",
-  ["副手"] = "不会做哈～",
-  ["发谁"] = "给这个号直接下单就行",
-  ["发给谁"] = "这个号直接下单就行",
+  { keyword = "再造", reply = "法杖全等级免费稳5，接再造，也是免费，直接下单就行" },
 
-  ["这个号"] = "直接给这个号（霜魄寒）下单就行",
-  ["这号"] = "直接给这个号（霜魄寒）下单就行",
-  ["619"] = fazhangString,
-  ["公函"] = fazhangString,
-  ["美化"] = fazhangString,
-  ["法杖"] = fazhangString,
-  ["几个"] = treiesString,
-  ["论述"] = treiesString,
-  ["采矿"] = treiesString,
-  ["炼金"] = treiesString,
-  ["工程"] = treiesString,
-  ["裁缝"] = treiesString,
-  ["珠宝"] = treiesString,
-  ["附魔"] = treiesString,
-  ["制皮"] = treiesString,
-  ["剥皮"] = treiesString,
-  ["铭文"] = treiesString,
-  ["挖草"] = treiesString,
-  ["锻造"] = treiesString,
-  ["无限"] = treiesString,
-  ["一周"] = treiesString,
-  ["每周"] = treiesString,
-  ["吃"] = treiesString,
-  ["材料"] = materialString,
-  ["小号"] = gonghuiString,
-  ["搜索"] = gonghuiString,
-  ["搜不到"] = gonghuiString,
-  ["跨服"] = gonghuiString,
-  ["会吗"] = canMakeString,
-  ["做吗"] = canMakeString,
-  ["能做"] = canMakeString,
-  ["会做"] = canMakeString,
+  { keyword = "稳", reply = "法杖全等级免费稳5，直接下单就行，人在秒做" },
+  { keyword = "包5", reply = "法杖全等级免费稳5，直接下单就行，人在秒做" },
+  { keyword = "保5", reply = "法杖全等级免费稳5，直接下单就行，人在秒做" },
+  { keyword = "包五", reply = "法杖全等级免费稳5，直接下单就行，人在秒做" },
+  { keyword = "保五", reply = "法杖全等级免费稳5，直接下单就行，人在秒做" },
+  { keyword = "5星", reply = "法杖全等级免费稳5，直接下单就行，人在秒做" },
+  { keyword = "五星", reply = "法杖全等级免费稳5，直接下单就行，人在秒做" },
 
 
+  { keyword = "包材料", reply = "不包材料哈，需要自己去拍卖行买～" },
+  { keyword = "全包", reply = "不包材料哈，需要自己去拍卖行买～" },
+  { keyword = "价格", reply = "免费做，直接下单给我就行～" },
+  { keyword = "佣金", reply = "免费做，直接下单给我就行～" },
+  { keyword = "钱", reply = "免费做，直接下单给我就行～" },
+  { keyword = "费", reply = "免费做，直接下单给我就行～" },
+  { keyword = "nga", reply = "在的，下单就行～" },
+  { keyword = "NGA", reply = "在的，下单就行～" },
+  { keyword = "在", reply = "在的，下单就行～" },
+  { keyword = "怎么做", reply = "自备材料工商联盟下单就行，免费做，具体怎么操作需要自己去抖音搜，回复“材料”查看所需材料" },
+
+  { keyword = "免费", reply = "对的，直接下单就行～" },
+  { keyword = "副手", reply = "不会做哈～" },
+  { keyword = "发谁", reply = "给这个号直接下单就行" },
+  { keyword = "发给谁", reply = "这个号直接下单就行" },
+  { keyword = "这个号", reply = "直接给这个号（霜魄寒）下单就行" },
+  { keyword = "这号", reply = "直接给这个号（霜魄寒）下单就行" },
+  { keyword = "619", reply = fazhangString },
+  { keyword = "公函", reply = fazhangString },
+  { keyword = "美化", reply = fazhangString },
+  { keyword = "法杖", reply = fazhangString },
+  { keyword = "几个", reply = treiesString },
+  { keyword = "论述", reply = treiesString },
+  { keyword = "采矿", reply = treiesString },
+  { keyword = "炼金", reply = treiesString },
+  { keyword = "工程", reply = treiesString },
+  { keyword = "裁缝", reply = treiesString },
+  { keyword = "珠宝", reply = treiesString },
+  { keyword = "附魔", reply = treiesString },
+  { keyword = "制皮", reply = treiesString },
+  { keyword = "剥皮", reply = treiesString },
+  { keyword = "铭文", reply = treiesString },
+  { keyword = "挖草", reply = treiesString },
+  { keyword = "锻造", reply = treiesString },
+  { keyword = "无限", reply = treiesString },
+  { keyword = "一周", reply = treiesString },
+  { keyword = "每周", reply = treiesString },
+  { keyword = "吃", reply = treiesString },
+  { keyword = "材料", reply = materialString },
+
+  { keyword = "会吗", reply = canMakeString },
+  { keyword = "做吗", reply = canMakeString },
+  { keyword = "能做", reply = canMakeString },
+  { keyword = "会做", reply = canMakeString },
+  { keyword = "会不会", reply = canMakeString },
 }
 
 -- 设置当前联系人为SavedVariables中的值
@@ -153,7 +170,6 @@ frame:SetScript("OnDragStop", function(self)
   local point, relativeTo, relativePoint, xOfs, yOfs = self:GetPoint()
   ChatManagerDB.framePosition = { point, relativePoint, xOfs, yOfs }
 end)
-
 
 -- 注册 GLOBAL_MOUSE_DOWN 事件
 frame:RegisterEvent("GLOBAL_MOUSE_DOWN")
@@ -474,16 +490,18 @@ end
 function CheckAutoReply(sender, message)
   if string.find(message, "1") and string.len(message) < 4 then
     print("短消息直接回复在的：" .. message)
-    SendChatMessage("在的，直接下单给我就行～", "WHISPER", nil, sender)
+    SendChatMessage("在的，直接下单给我就行，材料对秒做～", "WHISPER", nil, sender)
     return
   end
-  for keyword, reply in pairs(autoReplies) do
-    if string.find(message, keyword) then
-      SendChatMessage(reply, "WHISPER", nil, sender)
-      -- RecordChat(ChatManager.playerName, sender, reply)
-      break
+  for _, ar in ipairs(autoReplies) do
+    if string.find(message, ar.keyword) then
+      SendChatMessage(ar.reply, "WHISPER", nil, sender)
+      return
     end
   end
+
+  print("默认回复")
+  SendChatMessage("直接给我下单就行，法杖、PVP长柄全等级稳5，可再造，可加美化，全免费，三星材料三星公函三星美化秒做，不对自动退单，不教学～", "WHISPER", nil, sender)
 end
 
 -- 创建预设回复按钮
@@ -492,12 +510,11 @@ local function CreatePresetReplyButtons()
     local replyButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
     replyButton:SetSize(80, 30)
     replyButton:SetPoint("BOTTOMRIGHT", -20 - ((i - 1) % 2) * 90, 60 + math.floor((i - 1) / 2) * 40)
-    replyButton:SetText(preset.name)
+    replyButton:SetText(preset.keyword)
     replyButton:SetScript("OnClick", function()
       local contactName = ChatManager.currentContact
       if contactName then
-        SendChatMessage(preset.message, "WHISPER", nil, contactName)
-        -- RecordChat(ChatManager.playerName, contactName, preset.message)
+        SendChatMessage(preset.reply, "WHISPER", nil, contactName)
         ShowChatWith(contactName)
       else
         print("请选择一个联系人进行回复。")
@@ -538,7 +555,6 @@ local function CreateMessageInput()
       local contactName = ChatManager.currentContact
       if contactName then
         SendChatMessage(message, "WHISPER", nil, contactName)
-        -- RecordChat(ChatManager.playerName, contactName, message)
         ShowChatWith(contactName)
         messageInput:SetText("")
       else

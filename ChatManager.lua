@@ -45,6 +45,8 @@ local byPassStrings = {
   "OK",
   "感谢",
   "谢谢",
+  "3q",
+  "3Q",
   "谢谢你",
   "多谢"
 }

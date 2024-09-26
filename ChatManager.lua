@@ -88,12 +88,18 @@ local replyPresets = {
   { keyword = "公开订单", reply = "每人每天只能接4个公开订单。。" },
 }
 
-local canMakeString = "只会做双手法杖、PVP法杖、PVP长柄、各专业论述，其它都做不了哈～"
+local canMakeString = "只会做智力和敏捷双手法杖、PVP法杖、PVP长柄、各专业论述，其它都做不了哈～"
 local fiveStarString = "法杖全等级带美化免费稳5，接再造，也是免费，三星材料三星公函三星美化直接下单就行，人在秒做～"
 
 local autoReplies = {
   { keyword = "火炬", reply = "副手不会做哈～" },
   { keyword = "副手", reply = "副手不会做哈～" },
+  { keyword = "剑", reply = canMakeString },
+  { keyword = "斧", reply = canMakeString },
+  { keyword = "盾", reply = canMakeString },
+  { keyword = "长", reply = canMakeString },
+  { keyword = "枪", reply = canMakeString },
+  { keyword = "布甲", reply = canMakeString },
   -- 按优先级顺序排列
   { keyword = "小号", reply = gonghuiString },
   { keyword = "搜索", reply = gonghuiString },

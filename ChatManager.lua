@@ -134,8 +134,9 @@ local autoReplies = {
 
   { keyword = "免费", reply = "对的，直接下单就行～" },
   { keyword = "副手", reply = "不会做哈～" },
-  { keyword = "发谁", reply = "给这个号直接下单就行" },
-  { keyword = "发给谁", reply = "这个号直接下单就行" },
+  { keyword = "发谁", reply = "直接给这个号（霜魄寒）下单就行" },
+  { keyword = "发给谁", reply = "直接给这个号（霜魄寒）下单就行" },
+  { keyword = "名字", reply = "直接给这个号（霜魄寒）下单就行" },
   { keyword = "这个号", reply = "直接给这个号（霜魄寒）下单就行" },
   { keyword = "这号", reply = "直接给这个号（霜魄寒）下单就行" },
   { keyword = "三星", reply = "要三星材料三星公函三星美化哈～" },

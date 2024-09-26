@@ -87,6 +87,7 @@ local replyPresets = {
 }
 
 local canMakeString = "只会做双手法杖、PVP法杖、PVP长柄、各专业论述，其它都做不了哈～"
+local fiveStarString = "法杖全等级带美化免费稳5，接再造，也是免费，三星材料三星公函三星美化直接下单就行，人在秒做～"
 
 local autoReplies = {
   { keyword = "火炬", reply = "副手不会做哈～" },
@@ -105,15 +106,15 @@ local autoReplies = {
   { keyword = "发过", reply = "好的" },
   { keyword = "下了", reply = "好的" },
 
-  { keyword = "再造", reply = "法杖全等级免费稳5，接再造，也是免费，三星材料公函美化直接下单就行" },
+  { keyword = "再造", reply = fiveStarString },
 
-  { keyword = "稳", reply = "法杖全等级免费稳5，直接下单就行，人在秒做" },
-  { keyword = "包5", reply = "法杖全等级免费稳5，直接下单就行，人在秒做" },
-  { keyword = "保5", reply = "法杖全等级免费稳5，直接下单就行，人在秒做" },
-  { keyword = "包五", reply = "法杖全等级免费稳5，直接下单就行，人在秒做" },
-  { keyword = "保五", reply = "法杖全等级免费稳5，直接下单就行，人在秒做" },
-  { keyword = "5星", reply = "法杖全等级免费稳5，直接下单就行，人在秒做" },
-  { keyword = "五星", reply = "法杖全等级免费稳5，直接下单就行，人在秒做" },
+  { keyword = "稳", reply = fiveStarString },
+  { keyword = "包5", reply = fiveStarString },
+  { keyword = "保5", reply = fiveStarString },
+  { keyword = "包五", reply = fiveStarString },
+  { keyword = "保五", reply = fiveStarString },
+  { keyword = "5星", reply = fiveStarString },
+  { keyword = "五星", reply = fiveStarString },
 
 
   { keyword = "包材料", reply = "不包材料哈，需要自己去拍卖行买～" },

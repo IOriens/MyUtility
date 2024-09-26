@@ -529,7 +529,7 @@ function CheckAutoReply(sender, message)
   -- 确保只发送一次默认回复
   ChatManager.autoReplySent = ChatManager.autoReplySent or {}
   if not ChatManager.autoReplySent[sender] then
-    SendChatMessage("直接给我下单就行，法杖、PVP长柄全等级稳5，可再造，可加美化，全免费，三星材料三星公函三星美化秒做，不对自动退单，不教学～", "WHISPER", nil, sender)
+    SendChatMessage("直接给我下单就行，法杖、PVP长柄全等级稳5，可再造，可加美化，全免费，三星材料三星公函三星美化秒做，不对自动退单，消息太多不教学～", "WHISPER", nil, sender)
     ChatManager.autoReplySent[sender] = true
   else
     print("已发送默认回复，不再重复发送。")

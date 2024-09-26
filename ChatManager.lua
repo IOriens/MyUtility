@@ -53,6 +53,8 @@ local byPassStrings = {
 
 local itsMeString = "下单给我就行（霜魄寒）"
 
+local tutString = "自备材料工商联盟下单就行，免费做，回复“材料”查看所需材料，具体怎么操作，用什么美化，需要自己去搜，我这边消息太多回不过来～"
+
 local replyPresets = {
 
   -- 常用
@@ -80,7 +82,7 @@ local replyPresets = {
   -- （想放2星公函和美化需加钱至4k）
   { keyword = "法杖", reply = fazhangString },
   { keyword = "论述", reply = treiesString },
-  { keyword = "教学", reply = "具体怎么做、用什么美化好这些问题得去抖音或者百度搜下，我这边消息太多回不过来～" },
+  { keyword = "教学", reply = tutString },
   { keyword = "免费", reply = "免费做，直接下单给我就行，人在秒做～" },
   { keyword = "公会", reply = gonghuiString },
   { keyword = "公开订单", reply = "每人每天只能接4个公开订单。。" },
@@ -126,7 +128,9 @@ local autoReplies = {
   { keyword = "nga", reply = "在的，下单就行～" },
   { keyword = "NGA", reply = "在的，下单就行～" },
   { keyword = "在", reply = "在的，下单就行～" },
-  { keyword = "怎么做", reply = "自备材料工商联盟下单就行，免费做，具体怎么操作需要自己去抖音搜，回复“材料”查看所需材料" },
+  { keyword = "怎么做", reply = tutString },
+  { keyword = "啥是", reply = tutString },
+  { keyword = "是什么", reply = tutString },
 
   { keyword = "免费", reply = "对的，直接下单就行～" },
   { keyword = "副手", reply = "不会做哈～" },

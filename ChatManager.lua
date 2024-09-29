@@ -94,6 +94,11 @@ local fiveStarString = "法杖全等级带美化免费稳5，接再造，也是�
 local autoReplies = {
   { keyword = "火炬", reply = "副手不会做哈～" },
   { keyword = "副手", reply = "副手不会做哈～" },
+  { keyword = "混金", reply = "专业工具不接哈，不能稳5～" },
+  { keyword = "面杖", reply = "专业工具不接哈，不能稳5～" },
+  { keyword = "羽毛", reply = "专业工具不接哈，不能稳5～" },
+  { keyword = "饰品", reply = "不会做哈～" },
+  { keyword = "布甲", reply = "不会做哈～" },
   { keyword = "剑", reply = canMakeString },
   { keyword = "斧", reply = canMakeString },
   { keyword = "盾", reply = canMakeString },

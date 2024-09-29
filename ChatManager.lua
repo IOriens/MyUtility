@@ -24,16 +24,16 @@ local function meOrHim(name)
 end
 
 local materialString =
--- "制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r，做法杖要3星材料2星公函2星美化，做论述用最便宜的材料"
+-- "制作材料点这个查询 |cffffd000|Htrade:Player-707-06A25B60:45357:773|h[铭文]|h|r |cffffd000|Htrade:Player-707-068F7148:3908:197|h[裁缝]|h|r，做法杖要3星材料2星公函2星美化，做论述用最便宜的材料"
 -- （想放2星公函和美化需加钱至4k）
-"制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r ，做法杖要3星材料3星公函3星美化方便再造，做论述用最便宜的材料"
+"制作材料点这个查询 |cffffd000|Htrade:Player-707-06A25B60:45357:773|h[铭文]|h|r ，做法杖要3星材料3星公函3星美化方便再造，做论述用最便宜的材料"
 
 
 local treiesString =
-"论述一星材料即可，全专业的都能免费做。注意：每个专业一周只能吃一个，可以多做几个屯着~。制作材料点这个查询 |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r"
+"论述一星材料即可，全专业的都能免费做。注意：每个专业一周只能吃一个，可以多做几个屯着~。制作材料点这个查询 |cffffd000|Htrade:Player-707-06A25B60:45357:773|h[铭文]|h|r"
 -- 可跨服制作，
 local fazhangString = "双手法杖(智力/敏捷)免费包五星636、619、606、590，再造也是免费，自己买3星材料3星公函3星美化，做好纹章，法杖指定5星下个人单给" ..
-    meOrHim("霜魄寒")
+    meOrHim("雪中曲")
 
 
 local gonghuiString =
@@ -51,7 +51,7 @@ local byPassStrings = {
   "多谢"
 }
 
-local itsMeString = "下单给我就行（霜魄寒）"
+local itsMeString = "下单给我就行（雪中曲）"
 
 local tutString = "自备材料工商联盟下单就行，免费做，回复“材料”查看所需材料，具体怎么操作，用什么美化，需要自己去搜，我这边消息太多回不过来～"
 
@@ -78,7 +78,7 @@ local replyPresets = {
 
   -- { keyword = "锻造下单", reply = "锻造下单给圣焰之辉，下单后给我说我去换号~" },
   -- { keyword = "制皮下单", reply = "制皮下单给Reducer，下单后给我说我去换号~" },
-  -- { keyword = "法杖布甲", reply = "双手法杖5k包619，8k包636，免费做606和590，自己买3星材料2星公函2星美化，做好纹章，法杖和布甲指定5星下单给" .. meOrHim("霜魄寒") },
+  -- { keyword = "法杖布甲", reply = "双手法杖5k包619，8k包636，免费做606和590，自己买3星材料2星公函2星美化，做好纹章，法杖和布甲指定5星下单给" .. meOrHim("雪中曲") },
   -- （想放2星公函和美化需加钱至4k）
   { keyword = "法杖", reply = fazhangString },
   { keyword = "论述", reply = treiesString },
@@ -140,11 +140,11 @@ local autoReplies = {
 
   { keyword = "免费", reply = "对的，直接下单就行～" },
   { keyword = "副手", reply = "不会做哈～" },
-  { keyword = "发谁", reply = "直接给这个号（霜魄寒）下单就行" },
-  { keyword = "发给谁", reply = "直接给这个号（霜魄寒）下单就行" },
-  { keyword = "名字", reply = "直接给这个号（霜魄寒）下单就行" },
-  { keyword = "这个号", reply = "直接给这个号（霜魄寒）下单就行" },
-  { keyword = "这号", reply = "直接给这个号（霜魄寒）下单就行" },
+  { keyword = "发谁", reply = "直接给这个号（雪中曲）下单就行" },
+  { keyword = "发给谁", reply = "直接给这个号（雪中曲）下单就行" },
+  { keyword = "名字", reply = "直接给这个号（雪中曲）下单就行" },
+  { keyword = "这个号", reply = "直接给这个号（雪中曲）下单就行" },
+  { keyword = "这号", reply = "直接给这个号（雪中曲）下单就行" },
   { keyword = "三星", reply = "要三星材料三星公函三星美化哈～" },
   { keyword = "3星", reply = "要三星材料三星公函三星美化哈～" },
   { keyword = "619", reply = fazhangString },

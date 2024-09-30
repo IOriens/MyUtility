@@ -116,6 +116,7 @@ local autoReplies = {
   { keyword = "发了", reply = "好的" },
   { keyword = "发你了", reply = "好的" },
   { keyword = "已发", reply = "好的" },
+  { keyword = "下单了", reply = "好的" },
   { keyword = "发过", reply = "好的" },
   { keyword = "下了", reply = "好的" },
 

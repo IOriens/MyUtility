@@ -48,7 +48,8 @@ local byPassStrings = {
   "3q",
   "3Q",
   "谢谢你",
-  "多谢"
+  "多谢",
+  "DBM",
 }
 
 local itsMeString = "下单给我就行（雪中曲）"
@@ -147,6 +148,7 @@ local autoReplies = {
   { keyword = "免费", reply = "对的，直接下单就行～" },
   { keyword = "副手", reply = "不会做哈～" },
   { keyword = "发谁", reply = "直接给这个号（雪中曲）下单就行" },
+  { keyword = "id", reply = "直接给这个号下单就行" },
   { keyword = "发给谁", reply = "直接给这个号（雪中曲）下单就行" },
   { keyword = "名字", reply = "直接给这个号（雪中曲）下单就行" },
   { keyword = "这个号", reply = "直接给这个号（雪中曲）下单就行" },
@@ -177,13 +179,15 @@ local autoReplies = {
   { keyword = "材料", reply = materialString },
 
   { keyword = "会吗", reply = canMakeString },
+  { keyword = "会么", reply = canMakeString },
   { keyword = "做吗", reply = canMakeString },
   { keyword = "能做", reply = canMakeString },
   { keyword = "会做", reply = canMakeString },
-  { keyword = "会不会", reply = canMakeString },
+  { keyword = "会不", reply = canMakeString },
 }
 
 if UnitName("player") == "圣焰之辉" then
+  canMakeString = "只会做智力单手斧、力量敏捷双手斧、力量敏捷长柄武器，其它都做不了哈～"
   autoReplies = {
     { keyword = "切斧", reply = "充能切斧还不会做哈～" },    
     { keyword = "剑", reply = "不会做剑哈～" },
@@ -199,6 +203,22 @@ if UnitName("player") == "圣焰之辉" then
     { keyword = "已发", reply = "好的" },
     { keyword = "发过", reply = "好的" },
     { keyword = "下了", reply = "好的" },
+    { keyword = "免费", reply = "对的，直接下单就行～" },
+    { keyword = "副手", reply = "不会做哈～" },
+    { keyword = "发谁", reply = "直接给这个号下单就行" },
+    { keyword = "发给谁", reply = "直接给这个号下单就行" },
+    { keyword = "名字", reply = "直接给这个号下单就行" },
+    { keyword = "这个号", reply = "直接给这个号下单就行" },
+    { keyword = "这号", reply = "直接给这个号下单就行" },
+    { keyword = "id", reply = "直接给这个号下单就行" },
+    { keyword = "三星", reply = "要三星材料三星公函三星美化哈～" },
+    { keyword = "3星", reply = "要三星材料三星公函三星美化哈～" },
+    { keyword = "会吗", reply = canMakeString },
+    { keyword = "会么", reply = canMakeString },
+    { keyword = "做吗", reply = canMakeString },
+    { keyword = "能做", reply = canMakeString },
+    { keyword = "会做", reply = canMakeString },
+    { keyword = "会不", reply = canMakeString },
   }
 end
 
@@ -580,7 +600,7 @@ function CheckAutoReply(sender, message)
     ChatManager.autoReplySent = ChatManager.autoReplySent or {}
     if not ChatManager.autoReplySent[sender] then
       -- 双手斧
-      SendChatMessage("直接给我下单就行，可再造，可加美化，1k代工费，三星材料三星公函三星美化秒做，不对自动退单，消息太多不教学～", "WHISPER", nil, sender)
+      SendChatMessage("直接给我下单就行，可再造，可加美化，免代工费，三星材料三星公函三星美化秒做，不对自动退单，消息太多不教学～", "WHISPER", nil, sender)
       ChatManager.autoReplySent[sender] = true
     else
       print("已发送默认回复，不再重复发送。")

@@ -18,6 +18,7 @@
     "StaticPopupDialogs",
     "StaticPopup_Show",
     "SlashCmdList",
-    "message"
+    "message",
+    "UISpecialFrames"
   ]
 }

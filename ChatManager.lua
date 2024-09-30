@@ -182,6 +182,22 @@ local autoReplies = {
   { keyword = "会不会", reply = canMakeString },
 }
 
+if UnitName("player") == "圣焰之辉" then
+  autoReplies = {
+    { keyword = "切斧", reply = "充能切斧还不会做哈～" },
+    { keyword = "剑", reply = "不会做剑哈～" },
+    { keyword = "战刃", reply = "不会做战刃哈～" },
+    { keyword = "匕首", reply = "不会做匕首哈～" },
+    { keyword = "发布了", reply = "好的" },
+    { keyword = "发给你了", reply = "好的" },
+    { keyword = "发了", reply = "好的" },
+    { keyword = "发你了", reply = "好的" },
+    { keyword = "已发", reply = "好的" },
+    { keyword = "发过", reply = "好的" },
+    { keyword = "下了", reply = "好的" },
+  }
+end
+
 -- 设置当前联系人为SavedVariables中的值
 ChatManager.currentContact = ChatManagerDB.currentContact
 
@@ -543,13 +559,28 @@ function CheckAutoReply(sender, message)
   end
 
   print("默认回复")
-  -- 确保只发送一次默认回复
-  ChatManager.autoReplySent = ChatManager.autoReplySent or {}
-  if not ChatManager.autoReplySent[sender] then
-    SendChatMessage("直接给我下单就行，法杖、PVP长柄全等级稳5，可再造，可加美化，全免费，三星材料三星公函三星美化秒做，不对自动退单，消息太多不教学～", "WHISPER", nil, sender)
-    ChatManager.autoReplySent[sender] = true
-  else
-    print("已发送默认回复，不再重复发送。")
+
+  if UnitName("player") == "雪中曲" then
+    -- 确保只发送一次默认回复
+    ChatManager.autoReplySent = ChatManager.autoReplySent or {}
+    if not ChatManager.autoReplySent[sender] then
+      SendChatMessage("直接给我下单就行，法杖、PVP长柄全等级稳5，可再造，可加美化，全免费，三星材料三星公函三星美化秒做，不对自动退单，消息太多不教学～", "WHISPER", nil, sender)
+      ChatManager.autoReplySent[sender] = true
+    else
+      print("已发送默认回复，不再重复发送。")
+    end
+  end
+
+  if UnitName("player") == "圣焰之辉" then
+    -- 确保只发送一次默认回复
+    ChatManager.autoReplySent = ChatManager.autoReplySent or {}
+    if not ChatManager.autoReplySent[sender] then
+      -- 双手斧
+      SendChatMessage("直接给我下单就行，可再造，可加美化，1k代工费，三星材料三星公函三星美化秒做，不对自动退单，消息太多不教学～", "WHISPER", nil, sender)
+      ChatManager.autoReplySent[sender] = true
+    else
+      print("已发送默认回复，不再重复发送。")
+    end
   end
 end
 

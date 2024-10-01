@@ -92,6 +92,7 @@ local replyPresets = {
 local canMakeString = "只会做智力和敏捷双手法杖、PVP法杖、PVP长柄、各专业论述，其它都做不了哈～"
 local fiveStarString = "法杖全等级带美化免费稳5，接再造，也是免费，三星材料三星公函三星美化直接下单就行，人在秒做～"
 
+-- 雪中曲
 local autoReplies = {
   { keyword = "火炬", reply = "副手不会做哈～" },
   { keyword = "副手", reply = "副手不会做哈～" },
@@ -100,6 +101,7 @@ local autoReplies = {
   { keyword = "羽毛", reply = "专业工具不接哈，不能稳5～" },
   { keyword = "饰品", reply = "不会做哈～" },
   { keyword = "布甲", reply = "不会做哈～" },
+  { keyword = "徽记", reply = "不会做哈～" },
   { keyword = "剑", reply = canMakeString },
   { keyword = "斧", reply = canMakeString },
   { keyword = "盾", reply = canMakeString },
@@ -189,14 +191,14 @@ local autoReplies = {
 if UnitName("player") == "圣焰之辉" then
   canMakeString = "只会做智力单手斧、力量敏捷双手斧、力量敏捷长柄武器，其它都做不了哈～"
   autoReplies = {
-    { keyword = "切斧", reply = "充能切斧还不会做哈～" },    
-    { keyword = "卡", reply = "不接卡bug单～" },    
+    { keyword = "切斧", reply = "充能切斧还不会做哈～" },
+    { keyword = "卡", reply = "不接卡bug单～" },
     { keyword = "剑", reply = "不会做剑哈～" },
     { keyword = "锤", reply = "不会做锤哈～" },
     { keyword = "拳套", reply = "不会做拳套哈～" },
     { keyword = "战刃", reply = "不会做战刃哈～" },
     { keyword = "匕首", reply = "不会做匕首哈～" },
-    { keyword = "发布了", reply = "好的" },    
+    { keyword = "发布了", reply = "好的" },
     { keyword = "发给你了", reply = "好的" },
     { keyword = "发了", reply = "好的" },
     { keyword = "发你了", reply = "好的" },
@@ -563,7 +565,6 @@ end
 
 -- 自动回复函数
 function CheckAutoReply(sender, message)
-
   if string.find(sender, UnitName("player")) then
     print("自己发的消息，不回复：" .. message)
     return

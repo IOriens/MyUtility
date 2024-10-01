@@ -563,6 +563,12 @@ end
 
 -- 自动回复函数
 function CheckAutoReply(sender, message)
+
+  if string.find(sender, UnitName("player")) then
+    print("自己发的消息，不回复：" .. message)
+    return
+  end
+
   if string.find(message, "1") and string.len(message) < 4 then
     print("短消息直接回复在的：" .. message)
     SendChatMessage("在的，直接下单给我就行，人在秒做～", "WHISPER", nil, sender)

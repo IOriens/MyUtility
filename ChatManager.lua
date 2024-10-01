@@ -190,12 +190,12 @@ if UnitName("player") == "圣焰之辉" then
   canMakeString = "只会做智力单手斧、力量敏捷双手斧、力量敏捷长柄武器，其它都做不了哈～"
   autoReplies = {
     { keyword = "切斧", reply = "充能切斧还不会做哈～" },    
+    { keyword = "卡", reply = "不接卡bug单～" },    
     { keyword = "剑", reply = "不会做剑哈～" },
     { keyword = "锤", reply = "不会做锤哈～" },
     { keyword = "拳套", reply = "不会做拳套哈～" },
     { keyword = "战刃", reply = "不会做战刃哈～" },
     { keyword = "匕首", reply = "不会做匕首哈～" },
-    { keyword = "636", reply = "暂时接不了636稳5哈～" },
     { keyword = "发布了", reply = "好的" },    
     { keyword = "发给你了", reply = "好的" },
     { keyword = "发了", reply = "好的" },

@@ -36,8 +36,9 @@ local fazhangString = "双手法杖(智力/敏捷)免费包五星636、619、606
     meOrHim("雪中曲")
 
 
-local gonghuiString =
-"暂停接跨服单～跨服订单需要加我的公会|cffffd200|HclubFinder:ClubFinder-1-203805-707-59782982|h[公会: 夜间漫游]|h|r，搜不到可以加我战网“夜间漫游#5845”，我拉你进公会，申请通过后要按J键查看左上角邀请函进会"
+-- local gonghuiString =
+-- "暂停接跨服单～跨服订单需要加我的公会|cffffd200|HclubFinder:ClubFinder-1-203805-707-59782982|h[公会: 夜间漫游]|h|r，搜不到可以加我战网“夜间漫游#5845”，我拉你进公会，申请通过后要按J键查看左上角邀请函进会"
+local gonghuiString = "暂时不跨服单哈～"
 
 local byPassStrings = {
   "好的",

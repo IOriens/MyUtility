@@ -51,6 +51,7 @@ local byPassStrings = {
   "谢谢你",
   "多谢",
   "DBM",
+  "好吧"
 }
 
 local itsMeString = "下单给我就行（雪中曲）"
@@ -90,14 +91,13 @@ local replyPresets = {
   { keyword = "公开订单", reply = "每人每天只能接4个公开订单。。" },
 }
 
-local canMakeString = "只会做智力和敏捷双手法杖、PVP法杖、PVP长柄、各专业论述，其它都做不了哈～"
+local canMakeString = "只会做智力和敏捷双手法杖、PVP法杖、PVP长柄、炼金棒、各专业论述，其它都做不了哈～"
 local fiveStarString = "法杖全等级带美化免费稳5，接再造，也是免费，三星材料三星公函三星美化直接下单就行，人在秒做～"
 
 -- 雪中曲
 local autoReplies = {
   { keyword = "火炬", reply = "副手不会做哈～" },
   { keyword = "副手", reply = "副手不会做哈～" },
-  { keyword = "混金", reply = "专业工具不接哈，不能稳5～" },
   { keyword = "面杖", reply = "专业工具不接哈，不能稳5～" },
   { keyword = "羽毛", reply = "专业工具不接哈，不能稳5～" },
   { keyword = "饰品", reply = "不会做哈～" },

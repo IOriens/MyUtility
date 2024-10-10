@@ -51,7 +51,8 @@ local byPassStrings = {
   "谢谢你",
   "多谢",
   "DBM",
-  "好吧"
+  "好吧",
+  "好"
 }
 
 local itsMeString = "下单给我就行（雪中曲）"

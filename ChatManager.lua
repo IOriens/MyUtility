@@ -197,7 +197,7 @@ if UnitName("player") == "圣焰之辉" then
   autoReplies = {
 
     { keyword = "切斧", reply = "充能切斧还不会做哈～" },
-    { keyword = "卡", reply = "不接卡bug单～" },
+    -- { keyword = "卡", reply = "不接卡bug单～" },
     { keyword = "剑", reply = "不会做剑哈～" },
     { keyword = "拳套", reply = "不会做拳套哈～" },
     { keyword = "碎面", reply = "不会做拳套哈～" },
@@ -581,6 +581,11 @@ function CheckAutoReply(sender, message)
   if string.find(message, "1") and string.len(message) < 4 then
     print("短消息直接回复在的：" .. message)
     SendChatMessage("在的，直接下单给我就行，人在秒做～", "WHISPER", nil, sender)
+    return
+  end
+  if UnitName("player") == "圣焰之辉" and string.find(message, "卡") and not string.find(message, "卡兹") then
+    print("不接卡bug单" .. message)
+    SendChatMessage("不接卡bug单哈，别发给我～", "WHISPER", nil, sender)
     return
   end
   for _, ar in ipairs(autoReplies) do

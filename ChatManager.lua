@@ -55,7 +55,7 @@ local byPassStrings = {
   "好"
 }
 
-local itsMeString = "下单给我就行（雪中曲）"
+local itsMeString = "下单给我就行"
 
 local tutString = "自备材料工商联盟下单就行，免费做，回复“材料”查看所需材料，具体怎么操作，用什么美化，需要自己去搜，我这边消息太多回不过来～"
 
@@ -96,7 +96,7 @@ local canMakeString = "只会做智力和敏捷双手法杖、PVP法杖、PVP长
 local fiveStarString = "法杖全等级带美化免费稳5，接再造，也是免费，三星材料三星公函三星美化直接下单就行，人在秒做～"
 
 -- 雪中曲
-local autoReplies = {  
+local autoReplies = {
   { keyword = "火炬", reply = "不接哈，不能稳5～" },
   { keyword = "副手", reply = "不接哈，不能稳5～" },
   { keyword = "面杖", reply = "不接哈，不能稳5～" },
@@ -126,7 +126,7 @@ local autoReplies = {
   { keyword = "发过", reply = "好的" },
   { keyword = "下了", reply = "好的" },
   -- 必须放后面一点，先回复不能做的
-  { keyword = "再造", reply = "全等级再造免费做，需要三星材料美化公函，做不了会自动退单。一般都能做，除非第一次用了二星材料。。" },
+  { keyword = "再造", reply = "全等级再造免费稳5，需要三星材料美化公函，稳不了会自动退单。一般都能稳5，除非第一次做用了二星材料。。" },
   -- { keyword = "再造", reply = fiveStarString },
 
   { keyword = "稳", reply = fiveStarString },
@@ -153,12 +153,12 @@ local autoReplies = {
 
   { keyword = "免费", reply = "对的，直接下单就行～" },
   { keyword = "副手", reply = "不会做哈～" },
-  { keyword = "发谁", reply = "直接给这个号（雪中曲）下单就行" },
+  { keyword = "发谁", reply = "直接给这个号下单就行" },
   { keyword = "id", reply = "直接给这个号下单就行" },
-  { keyword = "发给谁", reply = "直接给这个号（雪中曲）下单就行" },
-  { keyword = "名字", reply = "直接给这个号（雪中曲）下单就行" },
-  { keyword = "这个号", reply = "直接给这个号（雪中曲）下单就行" },
-  { keyword = "这号", reply = "直接给这个号（雪中曲）下单就行" },
+  { keyword = "发给谁", reply = "直接给这个号下单就行" },
+  { keyword = "名字", reply = "直接给这个号下单就行" },
+  { keyword = "这个号", reply = "直接给这个号下单就行" },
+  { keyword = "这号", reply = "直接给这个号下单就行" },
   { keyword = "三星", reply = "要三星材料三星公函三星美化哈～" },
   { keyword = "3星", reply = "要三星材料三星公函三星美化哈～" },
   { keyword = "619", reply = fazhangString },
@@ -204,7 +204,7 @@ if UnitName("player") == "圣焰之辉" then
     { keyword = "战刃", reply = "不会做战刃哈～" },
     { keyword = "匕首", reply = "不会做匕首哈～" },
 
-    { keyword = "再造", reply = "全等级再造免费做，需要三星材料美化公函，做不了会自动退单。一般都能做，除非第一次用了二星材料。。" },
+    { keyword = "再造", reply = "全等级再造免费稳5，需要三星材料美化公函，稳不了会自动退单。一般都能稳5，除非第一次做用了二星材料。。" },
     { keyword = "发布了", reply = "好的" },
     { keyword = "发给你了", reply = "好的" },
     { keyword = "发了", reply = "好的" },
@@ -220,6 +220,7 @@ if UnitName("player") == "圣焰之辉" then
     { keyword = "这个号", reply = "直接给这个号下单就行" },
     { keyword = "这号", reply = "直接给这个号下单就行" },
     { keyword = "id", reply = "直接给这个号下单就行" },
+    { keyword = "材料", reply = "制作材料点这个查询 |cffffd000|Htrade:Player-707-06907839:2018:164|h[锻造]|h|r ，要3星材料3星公函3星美化方便再造" },
     { keyword = "三星", reply = "要三星材料三星公函三星美化哈～" },
     { keyword = "3星", reply = "要三星材料三星公函三星美化哈～" },
     { keyword = "会吗", reply = canMakeString },
@@ -614,7 +615,7 @@ function CheckAutoReply(sender, message)
     ChatManager.autoReplySent = ChatManager.autoReplySent or {}
     if not ChatManager.autoReplySent[sender] then
       -- 双手斧
-      SendChatMessage("直接给我下单就行，可再造，可加美化，免代工费，三星材料三星公函三星美化秒做，不对自动退单，消息太多不教学～", "WHISPER", nil, sender)
+      SendChatMessage("直接给我下单就行，可再造，可加美化，全等级免费稳5，三星材料三星公函三星美化秒做，不对自动退单，消息太多不教学～", "WHISPER", nil, sender)
       ChatManager.autoReplySent[sender] = true
     else
       print("已发送默认回复，不再重复发送。")

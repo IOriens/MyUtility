@@ -96,7 +96,7 @@ local canMakeString = "只会做智力和敏捷双手法杖、PVP法杖、PVP长
 local fiveStarString = "法杖全等级带美化免费稳5，接再造，也是免费，三星材料三星公函三星美化直接下单就行，人在秒做～"
 
 -- 雪中曲
-local autoReplies = {
+local autoReplies = {  
   { keyword = "火炬", reply = "不接哈，不能稳5～" },
   { keyword = "副手", reply = "不接哈，不能稳5～" },
   { keyword = "面杖", reply = "不接哈，不能稳5～" },
@@ -125,8 +125,9 @@ local autoReplies = {
   { keyword = "下单了", reply = "好的" },
   { keyword = "发过", reply = "好的" },
   { keyword = "下了", reply = "好的" },
-
-  { keyword = "再造", reply = fiveStarString },
+  -- 必须放后面一点，先回复不能做的
+  { keyword = "再造", reply = "全等级再造免费做，需要三星材料美化公函，做不了会自动退单。一般都能做，除非第一次用了二星材料。。" },
+  -- { keyword = "再造", reply = fiveStarString },
 
   { keyword = "稳", reply = fiveStarString },
   { keyword = "包5", reply = fiveStarString },
@@ -194,6 +195,7 @@ local autoReplies = {
 if UnitName("player") == "圣焰之辉" then
   canMakeString = "只会做智力单手斧、力量敏捷双手斧、力量敏捷长柄武器、各种单双手锤，其它都做不了哈～"
   autoReplies = {
+
     { keyword = "切斧", reply = "充能切斧还不会做哈～" },
     { keyword = "卡", reply = "不接卡bug单～" },
     { keyword = "剑", reply = "不会做剑哈～" },
@@ -201,6 +203,8 @@ if UnitName("player") == "圣焰之辉" then
     { keyword = "碎面", reply = "不会做拳套哈～" },
     { keyword = "战刃", reply = "不会做战刃哈～" },
     { keyword = "匕首", reply = "不会做匕首哈～" },
+
+    { keyword = "再造", reply = "全等级再造免费做，需要三星材料美化公函，做不了会自动退单。一般都能做，除非第一次用了二星材料。。" },
     { keyword = "发布了", reply = "好的" },
     { keyword = "发给你了", reply = "好的" },
     { keyword = "发了", reply = "好的" },

@@ -59,7 +59,7 @@ local itsMeString = "下单给我就行"
 
 local tutString = "自备材料工商联盟下单就行，免费做，回复“材料”查看所需材料，具体怎么操作，用什么美化，需要自己去搜，我这边消息太多回不过来～"
 
-local replyPresets = {
+local replyButtonPresets = {
 
   -- 常用
   { keyword = "马上发", reply = "好的" },
@@ -150,6 +150,7 @@ local autoReplies = {
   { keyword = "怎么做", reply = tutString },
   { keyword = "啥是", reply = tutString },
   { keyword = "是什么", reply = tutString },
+  { keyword = "匠人", reply = "匠人我也没有，需要自己百度一下怎么搞" },
 
   { keyword = "免费", reply = "对的，直接下单就行～" },
   { keyword = "副手", reply = "不会做哈～" },
@@ -203,6 +204,7 @@ if UnitName("player") == "圣焰之辉" then
     { keyword = "碎面", reply = "不会做拳套哈～" },
     { keyword = "战刃", reply = "不会做战刃哈～" },
     { keyword = "匕首", reply = "不会做匕首哈～" },
+    { keyword = "匠人", reply = "匠人我也没有，需要自己百度一下怎么搞" },
 
     { keyword = "再造", reply = "全等级再造免费稳5，需要三星材料美化公函，稳不了会自动退单。一般都能稳5，除非第一次做用了二星材料。。" },
     { keyword = "发布了", reply = "好的" },
@@ -630,7 +632,7 @@ end
 
 -- 创建预设回复按钮
 local function CreatePresetReplyButtons()
-  for i, preset in ipairs(replyPresets) do
+  for i, preset in ipairs(replyButtonPresets) do
     local replyButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
     replyButton:SetSize(80, 30)
     replyButton:SetPoint("BOTTOMRIGHT", -20 - ((i - 1) % 2) * 90, 60 + math.floor((i - 1) / 2) * 40)

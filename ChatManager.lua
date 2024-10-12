@@ -97,6 +97,8 @@ local fiveStarString = "法杖全等级带美化免费稳5，接再造，也是�
 
 -- 雪中曲
 local autoReplies = {
+  { keyword = "4星", reply = "不接四星单哈，怕给别人做错，请找别的工匠～" },
+  { keyword = "四星", reply = "不接四星单哈，怕给别人做错，请找别的工匠～" },
   { keyword = "火炬", reply = "不接哈，不能稳5～" },
   { keyword = "副手", reply = "不接哈，不能稳5～" },
   { keyword = "面杖", reply = "不接哈，不能稳5～" },
@@ -107,9 +109,11 @@ local autoReplies = {
   { keyword = "剑", reply = canMakeString },
   { keyword = "斧", reply = canMakeString },
   { keyword = "盾", reply = canMakeString },
+  { keyword = "防御", reply = canMakeString },
   { keyword = "长", reply = canMakeString },
   { keyword = "枪", reply = canMakeString },
   { keyword = "布甲", reply = canMakeString },
+  { keyword = "甲", reply = canMakeString },
   -- 按优先级顺序排列
   { keyword = "小号", reply = gonghuiString },
   { keyword = "搜索", reply = gonghuiString },
@@ -204,6 +208,9 @@ if UnitName("player") == "圣焰之辉" then
     { keyword = "碎面", reply = "不会做拳套哈～" },
     { keyword = "战刃", reply = "不会做战刃哈～" },
     { keyword = "匕首", reply = "不会做匕首哈～" },
+    { keyword = "甲", reply = canMakeString },
+    { keyword = "盾", reply = canMakeString },
+    { keyword = "防御", reply = canMakeString },
     { keyword = "匠人", reply = "匠人我也没有，需要自己百度一下怎么搞" },
 
     { keyword = "再造", reply = "全等级再造免费稳5，需要三星材料美化公函，稳不了会自动退单。一般都能稳5，除非第一次做用了二星材料。。" },

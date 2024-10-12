@@ -59,7 +59,7 @@ local itsMeString = "下单给我就行"
 
 local tutString = "自备材料工商联盟下单就行，免费做，回复“材料”查看所需材料，具体怎么操作，用什么美化，需要自己去搜，我这边消息太多回不过来～"
 
-local replyButtonPresets = {
+local ReplyButtonPresets = {
 
   -- 常用
   { keyword = "马上发", reply = "好的" },
@@ -632,7 +632,7 @@ end
 
 -- 创建预设回复按钮
 local function CreatePresetReplyButtons()
-  for i, preset in ipairs(replyButtonPresets) do
+  for i, preset in ipairs(ReplyButtonPresets) do
     local replyButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
     replyButton:SetSize(80, 30)
     replyButton:SetPoint("BOTTOMRIGHT", -20 - ((i - 1) % 2) * 90, 60 + math.floor((i - 1) / 2) * 40)

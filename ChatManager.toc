@@ -4,5 +4,6 @@
 ## Author: 您的名字
 ## SavedVariables: ChatManagerDB
 
+ChatPresets.lua
 ChatManager.lua
 ToggleButton.lua

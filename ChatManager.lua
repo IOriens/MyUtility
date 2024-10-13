@@ -106,7 +106,7 @@ local autoReplies = {
   { keyword = "饰品", reply = "不会做哈～" },
   { keyword = "布甲", reply = "不会做哈～" },
   { keyword = "徽记", reply = "不会做哈～" },
-  { keyword = "剑", reply = canMakeString },
+  { keyword = "短剑", reply = "不接哈，不能稳5～" },
   { keyword = "斧", reply = canMakeString },
   { keyword = "盾", reply = canMakeString },
   { keyword = "防御", reply = canMakeString },
@@ -117,7 +117,7 @@ local autoReplies = {
   { keyword = "去掉美化", reply = "再造把美化换成抛光粉就可以去美化，详细的自行百度" },
   { keyword = "去美化", reply = "再造把美化换成抛光粉就可以去美化，详细的自行百度" },
 
-  
+
   -- 按优先级顺序排列
   { keyword = "小号", reply = gonghuiString },
   { keyword = "搜索", reply = gonghuiString },
@@ -204,12 +204,13 @@ local autoReplies = {
 }
 
 if UnitName("player") == "圣焰之辉" then
-  canMakeString = "只会做智力单手斧、力量敏捷双手斧、力量敏捷长柄武器、各种单双手锤，其它都做不了哈～"
+  canMakeString =
+  "只会做智力单手斧、力量敏捷双手斧、力量敏捷长柄武器、各种单双手锤、单双手剑，其它都不能稳5哈～ |cffffd000|Htrade:Player-707-06907839:2018:164|h[锻造]|h|r"
   autoReplies = {
 
     { keyword = "切斧", reply = "充能切斧还不会做哈～" },
     -- { keyword = "卡", reply = "不接卡bug单～" },
-    { keyword = "剑", reply = "不会做剑哈～" },
+
     { keyword = "拳套", reply = "不会做拳套哈～" },
     { keyword = "碎面", reply = "不会做拳套哈～" },
     { keyword = "战刃", reply = "不会做战刃哈～" },
@@ -227,7 +228,7 @@ if UnitName("player") == "圣焰之辉" then
     { keyword = "公会", reply = gonghuiString },
     { keyword = "去掉美化", reply = "再造把美化换成抛光粉就可以去美化，详细的自行百度" },
     { keyword = "去美化", reply = "再造把美化换成抛光粉就可以去美化，详细的自行百度" },
-  
+
     { keyword = "再造", reply = "全等级再造免费稳5，需要三星材料美化公函，稳不了会自动退单。一般都能稳5，除非第一次做用了二星材料。。" },
     { keyword = "发布了", reply = "好的" },
     { keyword = "发给你了", reply = "好的" },

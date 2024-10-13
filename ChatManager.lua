@@ -212,8 +212,7 @@ if UnitName("player") == "圣焰之辉" then
     -- { keyword = "卡", reply = "不接卡bug单～" },
 
     { keyword = "拳套", reply = "不会做拳套哈～" },
-    { keyword = "碎面", reply = "不会做拳套哈～" },
-    { keyword = "战刃", reply = "不会做战刃哈～" },
+    { keyword = "碎面", reply = "不会做拳套哈～" },    
     { keyword = "匕首", reply = "不会做匕首哈～" },
     { keyword = "甲", reply = canMakeString },
     { keyword = "盾", reply = canMakeString },
@@ -634,7 +633,9 @@ function CheckAutoReply(sender, message)
     -- 确保只发送一次默认回复
     ChatManager.autoReplySent = ChatManager.autoReplySent or {}
     if not ChatManager.autoReplySent[sender] then
-      SendChatMessage("直接给我下单就行，法杖、PVP长柄全等级稳5，可再造，可加美化，全免费，三星材料三星公函三星美化秒做，不对自动退单，消息太多不教学～", "WHISPER", nil, sender)
+      SendChatMessage(
+        "直接给我下单就行，法杖、PVP长柄全等级稳5，可再造，可加美化，全免费，三星材料三星公函三星美化秒做，不对自动退单，消息太多不教学～ |cffffd000|Htrade:Player-707-068F7148:45357:773|h[铭文]|h|r",
+        "WHISPER", nil, sender)
       ChatManager.autoReplySent[sender] = true
     else
       print("已发送默认回复，不再重复发送。")
@@ -646,7 +647,9 @@ function CheckAutoReply(sender, message)
     ChatManager.autoReplySent = ChatManager.autoReplySent or {}
     if not ChatManager.autoReplySent[sender] then
       -- 双手斧
-      SendChatMessage("直接给我下单就行，可再造，可加美化，全等级免费稳5，三星材料三星公函三星美化秒做，不对自动退单，消息太多不教学～", "WHISPER", nil, sender)
+      SendChatMessage(
+        "直接给我下单就行，可再造，可加美化，全等级免费稳5，三星材料三星公函三星美化秒做，不对自动退单，消息太多不教学～ |cffffd000|Htrade:Player-707-06907839:2018:164|h[锻造]|h|r",
+        "WHISPER", nil, sender)
       ChatManager.autoReplySent[sender] = true
     else
       print("已发送默认回复，不再重复发送。")

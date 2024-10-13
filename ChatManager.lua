@@ -205,14 +205,14 @@ local autoReplies = {
 
 if UnitName("player") == "圣焰之辉" then
   canMakeString =
-  "只会做智力单手斧、力量敏捷双手斧、力量敏捷长柄武器、各种单双手锤、单双手剑，其它都不能稳5哈～ |cffffd000|Htrade:Player-707-06907839:2018:164|h[锻造]|h|r"
+  "只会做智力单手斧、力量敏捷双手斧、力量敏捷长柄武器、各种单双手锤、单双手剑和战刃，其它都不能稳5哈～ |cffffd000|Htrade:Player-707-06907839:2018:164|h[锻造]|h|r"
   autoReplies = {
 
     { keyword = "切斧", reply = "充能切斧还不会做哈～" },
     -- { keyword = "卡", reply = "不接卡bug单～" },
 
     { keyword = "拳套", reply = "不会做拳套哈～" },
-    { keyword = "碎面", reply = "不会做拳套哈～" },    
+    { keyword = "碎面", reply = "不会做拳套哈～" },
     { keyword = "匕首", reply = "不会做匕首哈～" },
     { keyword = "甲", reply = canMakeString },
     { keyword = "盾", reply = canMakeString },

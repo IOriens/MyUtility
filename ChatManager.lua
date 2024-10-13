@@ -114,6 +114,10 @@ local autoReplies = {
   { keyword = "枪", reply = canMakeString },
   { keyword = "布甲", reply = canMakeString },
   { keyword = "甲", reply = canMakeString },
+  { keyword = "去掉美化", reply = "再造把美化换成抛光粉就可以去美化，详细的自行百度" },
+  { keyword = "去美化", reply = "再造把美化换成抛光粉就可以去美化，详细的自行百度" },
+
+  
   -- 按优先级顺序排列
   { keyword = "小号", reply = gonghuiString },
   { keyword = "搜索", reply = gonghuiString },
@@ -220,7 +224,9 @@ if UnitName("player") == "圣焰之辉" then
     { keyword = "搜不到", reply = gonghuiString },
     { keyword = "跨服", reply = gonghuiString },
     { keyword = "公会", reply = gonghuiString },
-
+    { keyword = "去掉美化", reply = "再造把美化换成抛光粉就可以去美化，详细的自行百度" },
+    { keyword = "去美化", reply = "再造把美化换成抛光粉就可以去美化，详细的自行百度" },
+  
     { keyword = "再造", reply = "全等级再造免费稳5，需要三星材料美化公函，稳不了会自动退单。一般都能稳5，除非第一次做用了二星材料。。" },
     { keyword = "发布了", reply = "好的" },
     { keyword = "发给你了", reply = "好的" },

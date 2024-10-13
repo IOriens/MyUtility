@@ -216,6 +216,7 @@ if UnitName("player") == "圣焰之辉" then
     { keyword = "匕首", reply = "不会做匕首哈～" },
     { keyword = "甲", reply = canMakeString },
     { keyword = "盾", reply = canMakeString },
+    { keyword = "护", reply = canMakeString },
     { keyword = "防御", reply = canMakeString },
     { keyword = "匠人", reply = "匠人我也没有，需要自己百度一下怎么搞" },
     { keyword = "小号", reply = gonghuiString },

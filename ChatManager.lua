@@ -206,7 +206,7 @@ local autoReplies = {
 
 if UnitName("player") == "圣焰之辉" then
   canMakeString =
-  "只会做智力单手斧、力量敏捷双手斧、力量敏捷长柄武器、各种单双手锤、单双手剑和战刃，其它都不能稳5哈～ |cffffd000|Htrade:Player-707-06907839:2018:164|h[锻造]|h|r"
+  "除了充能切斧，其它所有武器都能全等级稳5哈～ |cffffd000|Htrade:Player-707-06907839:2018:164|h[锻造]|h|r"
   autoReplies = {
 
     { keyword = "切斧", reply = "充能切斧还不会做哈～" },

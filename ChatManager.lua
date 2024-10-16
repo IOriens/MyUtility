@@ -212,9 +212,6 @@ if UnitName("player") == "圣焰之辉" then
     { keyword = "切斧", reply = "充能切斧还不会做哈～" },
     -- { keyword = "卡", reply = "不接卡bug单～" },
 
-    { keyword = "拳套", reply = "不会做拳套哈～" },
-    { keyword = "碎面", reply = "不会做拳套哈～" },
-    { keyword = "匕首", reply = "不会做匕首哈～" },
     { keyword = "甲", reply = canMakeString },
     { keyword = "盾", reply = canMakeString },
     { keyword = "护", reply = canMakeString },

@@ -614,7 +614,7 @@ function CheckAutoReply(sender, message)
   end
   if UnitName("player") == "圣焰之辉" and string.find(message, "卡") and not string.find(message, "卡兹") then
     print("不接卡bug单" .. message)
-    SendChatMessage("不接卡bug单哈，别发给我～", "WHISPER", nil, sender)
+    SendChatMessage("不接卡bug单哈，发给我后果自负～", "WHISPER", nil, sender)
     return
   end
   for _, ar in ipairs(autoReplies) do

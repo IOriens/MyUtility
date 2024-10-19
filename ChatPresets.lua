@@ -8,7 +8,6 @@ CommonAutoReplies = {
   { keyword = "发过", reply = "好的" },
   { keyword = "下了", reply = "好的" },
   { keyword = "免费", reply = "对的，直接下单就行～" },
-  { keyword = "副手", reply = "不会做哈～" },
   { keyword = "发谁", reply = "直接给这个号下单就行" },
   { keyword = "发给谁", reply = "直接给这个号下单就行" },
   { keyword = "名字", reply = "直接给这个号下单就行" },

@@ -91,7 +91,7 @@ local ReplyButtonPresets = {
   { keyword = "公开订单", reply = "每人每天只能接4个公开订单。。" },
 }
 
-local canMakeString = "只会做智力和敏捷双手法杖、PVP法杖、PVP长柄、炼金棒、各专业论述，其它都做不了哈～"
+local canMakeString = "只会做智力和敏捷双手法杖、单手法杖、PVP法杖、PVP长柄、炼金棒、各专业论述，其它都做不了哈～"
 local fiveStarString = "法杖全等级带美化免费稳5，接再造，也是免费，三星材料三星公函三星美化直接下单就行，人在秒做～"
 
 -- 雪中曲
@@ -100,8 +100,7 @@ local autoReplies = {
   { keyword = "2星", reply = "不接二星材料单哈，怕给别人做错，请找别的工匠～" },
   { keyword = "二星", reply = "不接二星材料单哈，怕给别人做错，请找别的工匠～" },
   { keyword = "四星", reply = "不接四星单哈，怕给别人做错，请找别的工匠～" },
-  { keyword = "火炬", reply = "不接哈，不能稳5～" },
-  { keyword = "副手", reply = "不接哈，不能稳5～" },
+
   { keyword = "面杖", reply = "不接哈，不能稳5～" },
   { keyword = "羽毛", reply = "不接哈，不能稳5～" },
   { keyword = "饰品", reply = "不会做哈～" },
@@ -166,7 +165,7 @@ local autoReplies = {
   { keyword = "匠人", reply = "匠人我也没有，需要自己百度一下怎么搞" },
 
   { keyword = "免费", reply = "对的，直接下单就行～" },
-  { keyword = "副手", reply = "不会做哈～" },
+
   { keyword = "发谁", reply = "直接给这个号下单就行" },
   { keyword = "id", reply = "直接给这个号下单就行" },
   { keyword = "ID", reply = "直接给这个号下单就行" },
@@ -243,7 +242,7 @@ if UnitName("player") == "圣焰之辉" then
     { keyword = "发过", reply = "好的" },
     { keyword = "下了", reply = "好的" },
     { keyword = "免费", reply = "对的，直接下单就行～" },
-    { keyword = "副手", reply = "不会做哈～" },
+
     { keyword = "发谁", reply = "直接给这个号下单就行" },
     { keyword = "发给谁", reply = "直接给这个号下单就行" },
     { keyword = "名字", reply = "直接给这个号下单就行" },
@@ -616,7 +615,7 @@ function CheckAutoReply(sender, message)
   end
   if UnitName("player") == "圣焰之辉" and string.find(message, "卡") and not string.find(message, "卡兹") then
     print("不接卡bug单" .. message)
-    SendChatMessage("不接卡bug单哈，发给我后果自负～", "WHISPER", nil, sender)
+    SendChatMessage("不接卡bug单哈，做错过，发给我后果自负～", "WHISPER", nil, sender)
     return
   end
   for _, ar in ipairs(autoReplies) do

@@ -208,10 +208,10 @@ local autoReplies = {
 
 if UnitName("player") == "圣焰之辉" then
   canMakeString =
-  "除了" .. C_Spell.GetSpellLink(450242) .. "和盾牌，其它所有武器都能全等级稳5哈～ |cffffd000|Htrade:Player-707-06907839:2018:164|h[锻造]|h|r"
+  "只做武器哈，所有武器全等级稳5哈，带不带美化都可以～ |cffffd000|Htrade:Player-707-06907839:2018:164|h[锻造]|h|r"
   autoReplies = {
 
-    { keyword = "切斧", reply = "充能切斧还不会做哈～" },
+    -- { keyword = "切斧", reply = "充能切斧还不会做哈～" },
     -- { keyword = "卡", reply = "不接卡bug单～" },
 
     { keyword = "甲", reply = canMakeString },

@@ -91,7 +91,7 @@ local ReplyButtonPresets = {
   { keyword = "公开订单", reply = "每人每天只能接4个公开订单。。" },
 }
 
-local canMakeString = "只会做智力和敏捷双手法杖、单手法杖、PVP法杖、PVP长柄、炼金棒、各专业论述，其它都做不了哈～"
+local canMakeString = "只会做智力和敏捷双手法杖、单手法杖、PVP法杖、PVP长柄、炼金棒、各专业论述，其它都做不了哈～ 锻造类武器可以下单给圣焰之辉"
 local fiveStarString = "法杖全等级带美化免费稳5，接再造，也是免费，三星材料三星公函三星美化直接下单就行，人在秒做～"
 
 -- 雪中曲
@@ -214,6 +214,7 @@ if UnitName("player") == "圣焰之辉" then
     -- { keyword = "切斧", reply = "充能切斧还不会做哈～" },
     -- { keyword = "卡", reply = "不接卡bug单～" },
 
+    { keyword = "法杖", reply = "法杖下单给 雪中曲" },
     { keyword = "甲", reply = canMakeString },
     { keyword = "盾", reply = canMakeString },
     { keyword = "护", reply = canMakeString },

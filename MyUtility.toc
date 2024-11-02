@@ -8,3 +8,4 @@ BlackMarket.lua
 CancelAllTracked.lua
 PrintTalent.lua
 SendMail.lua
+MagePortals.lua

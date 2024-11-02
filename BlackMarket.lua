@@ -44,11 +44,11 @@ frame:RegisterEvent("PLAYER_LOGIN")
 frame:SetScript("OnEvent", function(self, event, ...)
   if event == "PLAYER_LOGIN" then
     -- GetLeilong()
-    if UnitName("player") == "星耀之辉" then
-      -- GetLeilong()
-      -- 每秒输出一次当前时间
-      C_Timer.NewTicker(1, printCurrentTime)
-    end
+    -- if UnitName("player") == "星耀之辉" then
+    --   -- GetLeilong()
+    --   -- 每秒输出一次当前时间
+    --   C_Timer.NewTicker(1, printCurrentTime)
+    -- end
   end
 end)
 

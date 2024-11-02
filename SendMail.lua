@@ -1,3 +1,4 @@
+-- /run SendMailWithMoney()
 function SendMailWithMoney()
   if not MailFrame:IsVisible() then
     print("请打开邮箱")

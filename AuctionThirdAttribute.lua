@@ -14,7 +14,7 @@ local function ShowThirdAttribute(row, itemLink)
     -- ["ITEM_MOD_CR_LIFESTEAL_SHORT"] = true,  -- 吸血
   }
 
-  DevTools_Dump(stats)
+  -- DevTools_Dump(stats)
 
   -- 遍历获取指定的属性
   for stat, value in pairs(stats) do

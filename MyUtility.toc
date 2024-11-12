@@ -9,3 +9,4 @@ CancelAllTracked.lua
 PrintTalent.lua
 SendMail.lua
 MagePortals.lua
+AuctionThirdAttribute.lua

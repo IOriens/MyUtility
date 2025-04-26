@@ -7,7 +7,7 @@ function SendMailWithMoney()
 
   MailFrameTab_OnClick(nil, 2)
   SendMailSubjectEditBox:SetText("1");
-  SendMailNameEditBox:SetText("夜间漫游");
+  SendMailNameEditBox:SetText("凝霜之魄");
   local money = GetMoney() / 10000 - 20000;
   -- 取整
   money = math.floor(money);
